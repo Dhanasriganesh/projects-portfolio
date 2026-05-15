@@ -60,7 +60,7 @@ export default function Header() {
             variant="secondary"
             aria-label={OFFICIAL_SITE_LABEL}
             title={OFFICIAL_SITE_LABEL}
-            className="hidden !px-3 sm:inline-flex"
+            className="hidden !px-3 md:inline-flex"
           >
             <ExternalSiteIcon />
           </NavbarButton>

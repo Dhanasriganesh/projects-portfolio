@@ -125,9 +125,9 @@ export default function Contact() {
                 onSubmit={onSubmit}
                 className="rounded-[2rem] border border-brand bg-white p-8 shadow-sm ring-1 ring-indigo-200 sm:p-10"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                   <div>
-                    <h2 className="font-display text-2xl font-extrabold text-ink">Project inquiry</h2>
+                    <h2 className="font-display text-xl font-extrabold text-ink sm:text-2xl">Project inquiry</h2>
                     <p className="mt-2 text-sm text-ink-muted">
                       Your inquiry opens in WhatsApp with the details pre-filled — tap send to reach our team.
                     </p>

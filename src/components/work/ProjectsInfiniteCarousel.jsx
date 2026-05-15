@@ -11,9 +11,9 @@ function CarouselArrow({ direction, onClick, disabled, label }) {
       disabled={disabled}
       aria-label={label}
       className={cn(
-        'absolute top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-brand bg-white/95 text-ink shadow-lg shadow-indigo-500/10 transition',
+        'absolute top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-brand bg-white/95 text-ink shadow-lg shadow-indigo-500/10 transition sm:h-11 sm:w-11',
         'hover:border-indigo-200 hover:bg-accent-soft hover:text-accent disabled:pointer-events-none disabled:opacity-35',
-        direction === 'left' ? 'left-2 sm:left-5' : 'right-2 sm:right-5',
+        direction === 'left' ? 'left-1 sm:left-4' : 'right-1 sm:right-4',
       )}
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -75,23 +75,23 @@ export default function ProjectsInfiniteCarousel({ projects, className }) {
       <CarouselArrow direction="right" onClick={() => scroll(1)} disabled={!canNext} label="Next project" />
 
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 bg-gradient-to-r from-[var(--color-surface-soft)] to-transparent sm:w-24"
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[var(--color-surface-soft)] to-transparent sm:w-20"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-14 bg-gradient-to-l from-[var(--color-surface)] to-transparent sm:w-24"
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[var(--color-surface)] to-transparent sm:w-20"
         aria-hidden
       />
 
       <div
         ref={trackRef}
-        className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-14 pb-2 sm:gap-6 sm:px-20 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-11 pb-2 sm:gap-6 sm:px-16 lg:px-20 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {projects.map((p) => (
           <div
             key={p.slug}
             data-carousel-card
-            className="w-[min(88vw,22rem)] shrink-0 snap-center sm:w-[24rem] lg:w-[26rem]"
+            className="w-[min(calc(100vw-5.5rem),22rem)] shrink-0 snap-center sm:w-[min(85vw,24rem)] lg:w-[26rem]"
           >
             <ProjectCard project={p} inCarousel />
           </div>

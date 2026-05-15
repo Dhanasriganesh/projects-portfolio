@@ -41,10 +41,10 @@ export default function Work() {
         lead={`${projects.length} deliveries — US IT consulting platforms, India industry products, Germany B2B tools, and mobile apps in beta.`}
         actions={
           <>
-            <ButtonLink to="/contact" variant="primary" className="px-8">
+            <ButtonLink to="/contact" variant="primary" className="w-full px-8 sm:w-auto">
               Start a project
             </ButtonLink>
-            <ButtonLink to="/about" variant="ghost" className="px-8">
+            <ButtonLink to="/about" variant="ghost" className="w-full px-8 sm:w-auto">
               Meet the team
             </ButtonLink>
           </>
@@ -109,7 +109,7 @@ export default function Work() {
             </p>
           </RevealOnScroll>
           <RevealOnScroll className="lg:col-span-5 lg:justify-self-end">
-            <ButtonLink to="/contact" variant="primary" className="px-8">
+            <ButtonLink to="/contact" variant="primary" className="w-full px-8 sm:w-auto lg:justify-self-end">
               Discuss your product
             </ButtonLink>
           </RevealOnScroll>

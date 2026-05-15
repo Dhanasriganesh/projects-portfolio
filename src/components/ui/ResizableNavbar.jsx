@@ -43,7 +43,7 @@ export function NavBody({ children, className, visible }) {
       }}
       transition={{ type: 'spring', stiffness: 220, damping: 42 }}
       className={cn(
-        'relative z-[60] mx-auto hidden min-h-[3.25rem] w-full flex-row items-center justify-between gap-4 rounded-full px-3 py-2 lg:flex',
+        'relative z-[60] mx-auto hidden min-h-[3.25rem] w-full flex-row items-center justify-between gap-3 rounded-full px-3 py-2 md:flex',
         visible ? 'border border-brand/80 bg-white/90' : 'border border-transparent bg-transparent',
         className,
       )}
@@ -60,7 +60,7 @@ export function NavItems({ items, className, onItemClick }) {
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        'absolute inset-0 hidden flex-1 flex-row items-center justify-center gap-1 lg:flex',
+        'absolute inset-0 hidden flex-1 flex-row items-center justify-center gap-1 md:flex',
         className,
       )}
     >
@@ -105,7 +105,7 @@ export function MobileNav({ children, className, visible }) {
       }}
       transition={{ type: 'spring', stiffness: 220, damping: 42 }}
       className={cn(
-        'relative z-50 mx-auto flex w-full max-w-[calc(100vw-1.5rem)] flex-col lg:hidden',
+        'relative z-50 mx-auto flex w-full max-w-[calc(100vw-1.5rem)] flex-col md:hidden',
         visible ? 'rounded-2xl border border-brand/80 bg-white/92' : 'rounded-2xl border border-transparent bg-transparent',
         className,
       )}

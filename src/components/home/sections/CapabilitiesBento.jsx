@@ -63,7 +63,7 @@ function ProcessTile() {
   return (
     <div className="flex h-full min-h-0 flex-col justify-between gap-2">
       <p className="text-[10px] font-extrabold uppercase tracking-[0.26em] text-ink-muted">How we deliver</p>
-      <ol className="grid grid-cols-2 gap-1.5 sm:grid-cols-4">
+      <ol className="grid grid-cols-2 gap-2 md:grid-cols-4">
         {process.map((step) => (
           <li key={step.step} className="rounded-md border border-brand bg-accent-soft/40 px-2 py-1.5">
             <span className="text-[9px] font-extrabold uppercase tracking-widest text-accent">{step.step}</span>
@@ -158,12 +158,12 @@ export default function CapabilitiesBento() {
   const [hovered, setHovered] = useState(null)
 
   return (
-    <section className="relative bg-white py-20 sm:py-28">
+    <section className="relative overflow-x-clip bg-white py-16 sm:py-20 lg:py-28">
       <div className="pointer-events-none absolute right-0 top-1/4 h-[min(60vh,480px)] w-[min(50vw,400px)] translate-x-1/4 rounded-full bg-gradient-to-bl from-indigo-200/40 via-transparent to-transparent blur-3xl" aria-hidden />
       <Container className="relative">
         <div className="max-w-3xl">
           <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-ink-muted">What we do</p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl md:text-5xl">
             Services & <span className="text-accent">delivery</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-ink-muted">
