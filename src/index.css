@@ -178,7 +178,13 @@
       linear-gradient(180deg, var(--color-surface-soft) 0%, var(--color-surface) 100%);
   }
 
-  /* Capabilities bento — fixed areas, no grid holes */
+  /* Capabilities bento — single column on mobile; mosaic from md */
+  @media (max-width: 767px) {
+    .bento-capabilities-grid > * {
+      grid-area: unset !important;
+    }
+  }
+
   @media (min-width: 768px) {
     .bento-capabilities-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));

@@ -21,7 +21,7 @@ export default function ProjectCard({ project: p, className, inCarousel = false 
       className={cn(
         'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-brand bg-white shadow-md',
         'ring-1 ring-indigo-100 transition-shadow duration-300 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/12',
-        inCarousel && 'h-[min(100%,28rem)] min-h-[26rem]',
+        inCarousel && 'min-h-0 sm:min-h-[22rem] lg:min-h-[24rem]',
         p.accent,
         className,
       )}

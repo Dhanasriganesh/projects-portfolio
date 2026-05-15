@@ -16,7 +16,7 @@ export default function Footer() {
   const spotlight = projects.filter((p) => p.href).slice(0, 5)
 
   return (
-    <footer className="mt-20 border-t border-brand bg-white">
+    <footer className="mt-16 overflow-x-clip border-t border-brand bg-white sm:mt-20">
       <div className="h-1 w-full bg-rainbow-strip" aria-hidden />
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-12">
@@ -69,7 +69,7 @@ export default function Footer() {
               <ul className="mt-4 space-y-2 text-sm text-ink-muted">
                 <li>
                   <a
-                    className="font-semibold text-ink hover:text-ink"
+                    className="break-all font-semibold text-ink hover:text-ink"
                     href={`mailto:${company.email}`}
                   >
                     {company.email}
@@ -123,7 +123,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-brand pt-8 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {company.legalName}. All rights reserved.</p>
-          <p className="font-semibold text-ink-muted">{company.tagline}</p>
+          <p className="max-w-md font-semibold text-ink-muted sm:text-right">{company.tagline}</p>
         </div>
       </Container>
     </footer>

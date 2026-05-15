@@ -82,7 +82,7 @@ export default function HeroPortal() {
   }
 
   return (
-    <section ref={root} className="relative min-h-[100dvh] overflow-hidden">
+    <section ref={root} className="relative min-h-[100dvh] overflow-x-clip overflow-y-visible">
       <CustomCursor active={wideFinePointer && !reduced} boundaryRef={root} />
       <div
         data-hero-orbs
@@ -105,10 +105,13 @@ export default function HeroPortal() {
 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_color-mix(in_oklab,var(--color-accent)_10%,transparent),_transparent_55%)]" />
 
-      <Container data-hero-scroll-layer className="relative flex min-h-[100dvh] flex-col justify-center pb-20 pt-28 sm:pt-32 will-change-transform">
+      <Container
+        data-hero-scroll-layer
+        className="relative flex min-h-[calc(100dvh-4rem)] flex-col justify-center pb-16 pt-28 will-change-transform sm:min-h-[calc(100dvh-5rem)] sm:pb-20 sm:pt-32"
+      >
         <div
           data-hero-badge
-          className="inline-flex w-max max-w-full items-center gap-3 rounded-full border border-brand bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-ink-muted shadow-sm backdrop-blur-md"
+          className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-brand bg-white/90 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-muted shadow-sm backdrop-blur-md sm:gap-3 sm:px-4 sm:text-xs sm:tracking-[0.22em]"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400/50 opacity-50" />
@@ -117,7 +120,7 @@ export default function HeroPortal() {
           {company.legalName} · Est. {company.founded}
         </div>
 
-        <h1 className="mt-10 max-w-[18ch] font-display text-[clamp(2.35rem,6.2vw,4.75rem)] font-bold leading-[1.02] tracking-tight text-ink">
+        <h1 className="mt-8 max-w-[min(100%,20ch)] font-display text-[clamp(2rem,5.5vw,4.75rem)] font-bold leading-[1.05] tracking-tight text-ink sm:mt-10 sm:max-w-[22ch]">
           <span data-hero-line className="block [perspective:1200px]">
             {splitWord('Transforming', 'l1a')}
           </span>
@@ -134,14 +137,24 @@ export default function HeroPortal() {
           {company.blurb}
         </p>
 
-        <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <span data-hero-cta>
-            <ButtonLink to="/work" variant="primary" cursorHover className="min-w-[200px] px-8 py-3.5 text-[0.95rem]">
+                <div className="mt-10 flex w-full max-w-md flex-col gap-3 sm:mt-12 sm:max-w-none sm:flex-row sm:items-center sm:gap-4">
+          <span data-hero-cta className="w-full sm:w-auto">
+            <ButtonLink
+              to="/work"
+              variant="primary"
+              cursorHover
+              className="w-full px-8 py-3.5 text-[0.95rem] sm:min-w-[11rem]"
+            >
               View our work
             </ButtonLink>
           </span>
-          <span data-hero-cta>
-            <ButtonLink to="/contact" variant="ghost" cursorHover className="min-w-[200px] px-8 py-3.5 text-[0.95rem]">
+          <span data-hero-cta className="w-full sm:w-auto">
+            <ButtonLink
+              to="/contact"
+              variant="ghost"
+              cursorHover
+              className="w-full px-8 py-3.5 text-[0.95rem] sm:min-w-[11rem]"
+            >
               Start a project
             </ButtonLink>
           </span>

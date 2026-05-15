@@ -48,7 +48,7 @@ export function BentoGridItem({
       style={gridArea ? { gridArea } : undefined}
       className={cn(
         'group/bento relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-brand bg-white p-3.5 shadow-sm',
-        'transition-[box-shadow,border-color,transform,opacity,filter] duration-300 md:p-4',
+        'transition-[box-shadow,border-color,transform,opacity,filter] duration-300 sm:p-4',
         'hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-500/10',
         dimmed && 'scale-[0.99] opacity-70 blur-[1px]',
         className,

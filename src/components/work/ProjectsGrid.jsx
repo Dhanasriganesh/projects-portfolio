@@ -1,7 +1,7 @@
 import ProjectCard from './ProjectCard'
 import { cn } from '../../lib/cn'
 
-export default function ProjectsGrid({ projects, className, columns = 'md:grid-cols-2 xl:grid-cols-3' }) {
+export default function ProjectsGrid({ projects, className, columns = 'sm:grid-cols-2 xl:grid-cols-3' }) {
   if (!projects?.length) return null
 
   return (
