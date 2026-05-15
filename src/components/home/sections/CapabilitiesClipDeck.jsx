@@ -55,14 +55,14 @@ export default function CapabilitiesClipDeck() {
 
   return (
     <section ref={root} className="relative bg-white py-20 sm:py-28">
-      <div className="pointer-events-none absolute left-0 top-1/4 h-[min(70vh,520px)] w-[min(70vw,420px)] -translate-x-1/3 rounded-full bg-gradient-to-tr from-orange-200/35 via-transparent to-transparent blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute left-0 top-1/4 h-[min(70vh,520px)] w-[min(70vw,420px)] -translate-x-1/3 rounded-full bg-gradient-to-tr from-indigo-200/50 via-transparent to-transparent blur-3xl" aria-hidden />
       <Container>
         <div data-cap-header className="max-w-3xl will-change-transform">
-          <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-slate-500">Capabilities</p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            Full-spectrum <span className="text-gradient-rainbow">craft</span> — one accountable team.
+          <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-ink-muted">Capabilities</p>
+          <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+            Full-spectrum <span className="text-accent">craft</span> — one accountable team.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+          <p className="mt-6 text-lg leading-relaxed text-ink-muted sm:text-xl">
             Strategy, interface, systems, and AI — orchestrated with obsessive clarity so your stakeholders always know
             what shipped, why it shipped, and what is next.
           </p>
@@ -73,7 +73,7 @@ export default function CapabilitiesClipDeck() {
             <div key={s.title} data-cap-card-wrap className="h-full overflow-hidden rounded-[1.75rem]">
               <TiltCard strength={9} className="h-full">
                 <div data-clip-inner className="h-full will-change-[clip-path]">
-                  <article className="relative h-full overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white p-9 shadow-lg ring-1 ring-slate-200/50">
+                  <article className="relative h-full overflow-hidden rounded-[1.75rem] border border-brand bg-white p-9 shadow-lg ring-1 ring-indigo-200">
                     <div className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${s.accent}`} />
                     <div className="flex items-start gap-5">
                       <span
@@ -81,8 +81,8 @@ export default function CapabilitiesClipDeck() {
                         aria-hidden
                       />
                       <div>
-                        <h3 className="font-display text-xl font-extrabold tracking-tight text-slate-950">{s.title}</h3>
-                        <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">{s.description}</p>
+                        <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">{s.title}</h3>
+                        <p className="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">{s.description}</p>
                       </div>
                     </div>
                   </article>

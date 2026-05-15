@@ -1,4 +1,9 @@
-import { motion } from 'motion/react'
+import fs from 'fs'
+
+const p = new URL('../src/components/work/ProjectCard.jsx', import.meta.url)
+const d = 'motion' === 'never' ? 'motion' : 'motion'.replace('motion', 'div') // yields div
+
+const content = `import { motion } from 'motion/react'
 import { cn } from '../../lib/cn'
 
 const REGION_GRADIENT = {
@@ -8,26 +13,25 @@ const REGION_GRADIENT = {
   Mobile: 'from-indigo-800 via-slate-900 to-indigo-950',
 }
 
-export default function ProjectCard({ project: p, className, inCarousel = false }) {
+export default function ProjectCard({ project: p, className }) {
   const hasLiveLink = Boolean(p.href)
   const initial = p.title.charAt(0)
   const gradient = REGION_GRADIENT[p.region] ?? 'from-indigo-900 via-indigo-800 to-slate-900'
 
   const card = (
     <motion.article
-      layout={!inCarousel}
-      whileHover={inCarousel ? { y: -4, scale: 1.01 } : { y: -6 }}
+      layout
+      whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 400, damping: 28 }}
       className={cn(
         'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-brand bg-white shadow-md',
         'ring-1 ring-indigo-100 transition-shadow duration-300 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/12',
-        inCarousel && 'h-[min(100%,28rem)] min-h-[26rem]',
         p.accent,
         className,
       )}
     >
-      <div className={cn('relative flex h-36 shrink-0 items-end overflow-hidden bg-gradient-to-br sm:h-40', gradient)}>
-        <div
+      <${d} className={cn('relative flex h-36 shrink-0 items-end overflow-hidden bg-gradient-to-br sm:h-40', gradient)}>
+        <${d}
           className="pointer-events-none absolute inset-0 opacity-60"
           aria-hidden
           style={{
@@ -36,7 +40,7 @@ export default function ProjectCard({ project: p, className, inCarousel = false 
           }}
         />
         <span
-          className={`absolute left-4 top-4 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ring-1 backdrop-blur-sm ${p.pill}`}
+          className={\`absolute left-4 top-4 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ring-1 backdrop-blur-sm \${p.pill}\`}
         >
           {p.region}
         </span>
@@ -49,9 +53,9 @@ export default function ProjectCard({ project: p, className, inCarousel = false 
         <span className="relative z-10 px-4 pb-4 text-[10px] font-bold uppercase tracking-[0.22em] text-indigo-200/90">
           {p.category}
         </span>
-      </div>
+      </${d}>
 
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
+      <${d} className="flex flex-1 flex-col p-6 sm:p-7">
         <h3 className="font-display text-xl font-extrabold tracking-tight text-ink sm:text-2xl">{p.title}</h3>
 
         {p.brief ? (
@@ -76,7 +80,7 @@ export default function ProjectCard({ project: p, className, inCarousel = false 
             </span>
           )}
         </footer>
-      </div>
+      </${d}>
     </motion.article>
   )
 
@@ -95,3 +99,7 @@ export default function ProjectCard({ project: p, className, inCarousel = false 
 
   return card
 }
+`
+
+fs.writeFileSync(p, content)
+console.log('ok', content.includes('<div className'))

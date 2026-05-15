@@ -1,48 +1,49 @@
 @import "tailwindcss";
 
+/**
+ * Single-accent palette — indigo primary + neutral complements only
+ */
 @theme {
   --font-sans: "Funnel Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Funnel Display", ui-sans-serif, system-ui, sans-serif;
 
   --color-surface: #ffffff;
-  --color-surface-soft: #f4f7fa;
-  --color-ink: #1d3557;
-  --color-ink-muted: #4a6274;
-  --color-border: #d8e2ec;
-  --color-soft: #f4f7fa;
+  --color-surface-soft: #f8fafc;
+  --color-surface-muted: #f1f5f9;
+  --color-surface-dark: #0f172a;
+  --color-ink: #0f172a;
+  --color-ink-muted: #64748b;
+  --color-border: #e2e8f0;
 
-  /* Logo crown spectrum */
-  --color-brand-red: #e63946;
-  --color-brand-orange: #f4a261;
-  --color-brand-yellow: #e9c46a;
-  --color-brand-green: #2a9d8f;
-  --color-brand-cyan: #00b4d8;
-  --color-brand-blue: #0077b6;
-  --color-brand-purple: #7209b7;
-  --color-brand-navy: #1d3557;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-accent-light: #818cf8;
+  --color-accent-soft: #eef2ff;
+  --color-accent-muted: #c7d2fe;
 
-  /* Legacy aliases used by utilities */
-  --color-r-500: var(--color-brand-red);
-  --color-o-500: var(--color-brand-orange);
-  --color-y-500: var(--color-brand-yellow);
-  --color-g-500: var(--color-brand-green);
-  --color-b-500: var(--color-brand-blue);
-  --color-i-500: var(--color-brand-cyan);
-  --color-v-500: var(--color-brand-purple);
+  --color-brand-navy: #0f172a;
+  --color-brand-red: var(--color-accent);
+  --color-brand-orange: var(--color-accent-light);
+  --color-brand-yellow: var(--color-accent-muted);
+  --color-brand-green: var(--color-accent);
+  --color-brand-cyan: var(--color-accent-light);
+  --color-brand-blue: var(--color-accent);
+  --color-brand-purple: var(--color-accent-hover);
 }
 
 @layer base {
   html {
-    @apply antialiased;
+    @apply antialiased scroll-smooth;
     font-family: var(--font-sans);
     color: var(--color-ink);
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-soft);
     overflow-x: clip;
     max-width: 100%;
   }
 
   body {
-    @apply m-0 min-h-dvh bg-white text-[color:var(--color-ink)];
+    @apply m-0 min-h-dvh text-ink;
+    background-color: var(--color-surface-soft);
     overflow-x: clip;
     max-width: 100%;
   }
@@ -52,23 +53,25 @@
     max-width: 100%;
   }
 
-  html.gm-cursor-none body {
+  .gm-cursor-none,
+  .gm-cursor-none * {
     cursor: none;
   }
 
   @media (max-width: 1023px) {
-    html.gm-cursor-none body {
+    .gm-cursor-none,
+    .gm-cursor-none * {
       cursor: auto;
     }
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-brand-cyan) 32%, white);
-    color: var(--color-ink);
+    background: var(--color-accent);
+    color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand-blue);
+    outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
 }
@@ -95,67 +98,88 @@
     color: var(--color-ink-muted);
   }
 
+  .text-accent {
+    color: var(--color-accent);
+  }
+
   .bg-surface-soft {
     background-color: var(--color-surface-soft);
+  }
+
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+
+  .bg-accent-soft {
+    background-color: var(--color-accent-soft);
   }
 
   .border-brand {
     border-color: var(--color-border);
   }
 
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  /* Solid accent — no multi-color gradients */
+  .text-gradient-accent,
+  .text-gradient-rainbow {
+    color: var(--color-accent);
+    background-image: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+
+  .bg-gradient-accent {
+    background-color: var(--color-accent);
+    background-image: none;
+  }
+
+  .card-surface {
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    box-shadow:
+      0 1px 2px rgb(15 23 42 / 0.04),
+      0 12px 40px -20px rgb(79 70 229 / 0.1);
+  }
+
   .animate-marquee {
     animation: marquee 38s linear infinite;
   }
 
-  .text-gradient-rainbow {
-    background-image: linear-gradient(
-      90deg,
-      var(--color-brand-red),
-      var(--color-brand-orange),
-      var(--color-brand-yellow),
-      var(--color-brand-green),
-      var(--color-brand-cyan),
-      var(--color-brand-blue),
-      var(--color-brand-purple)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .animate-marquee-cards {
+    animation: marquee 72s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-marquee-cards {
+      animation: none;
+    }
   }
 
   .border-gradient-rainbow {
-    border-image: linear-gradient(
-      90deg,
-      var(--color-brand-red),
-      var(--color-brand-orange),
-      var(--color-brand-yellow),
-      var(--color-brand-green),
-      var(--color-brand-cyan),
-      var(--color-brand-blue),
-      var(--color-brand-purple)
-    )
-      1;
+    border-color: var(--color-border);
   }
 
   .bg-rainbow-strip {
-    background: linear-gradient(
-      90deg,
-      var(--color-brand-red),
-      var(--color-brand-orange),
-      var(--color-brand-yellow),
-      var(--color-brand-green),
-      var(--color-brand-cyan),
-      var(--color-brand-blue),
-      var(--color-brand-purple)
-    );
+    background-color: var(--color-accent);
   }
 
   .mesh-rainbow {
     background:
-      radial-gradient(900px 420px at 12% 8%, color-mix(in oklab, var(--color-brand-red) 14%, white), transparent 60%),
-      radial-gradient(760px 380px at 88% 12%, color-mix(in oklab, var(--color-brand-purple) 12%, white), transparent 58%),
-      radial-gradient(700px 360px at 70% 92%, color-mix(in oklab, var(--color-brand-blue) 14%, white), transparent 55%),
-      radial-gradient(640px 320px at 18% 88%, color-mix(in oklab, var(--color-brand-green) 12%, white), transparent 55%),
-      linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+      radial-gradient(900px 420px at 10% 0%, color-mix(in oklab, var(--color-accent) 8%, white), transparent 58%),
+      linear-gradient(180deg, var(--color-surface-soft) 0%, var(--color-surface) 100%);
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white;
+    background-color: var(--color-accent);
   }
 }

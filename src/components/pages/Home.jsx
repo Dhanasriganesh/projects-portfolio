@@ -1,29 +1,27 @@
 import { useMemo } from 'react'
 import HeroPortal from '../home/HeroPortal'
 import RainbowMarquee from '../home/RainbowMarquee'
-import FallingLettersShowcase from '../home/FallingLettersShowcase'
 import StatsAuditorium from '../home/sections/StatsAuditorium'
-import CapabilitiesClipDeck from '../home/sections/CapabilitiesClipDeck'
-import WorkParallaxShowcase from '../home/sections/WorkParallaxShowcase'
+import FeaturedProjects from '../home/sections/FeaturedProjects'
+import CapabilitiesBento from '../home/sections/CapabilitiesBento'
 import ProcessLineReveal from '../home/sections/ProcessLineReveal'
 import TestimonialWordHaze from '../home/sections/TestimonialWordHaze'
 import CTAFieldPulse from '../home/sections/CTAFieldPulse'
-import { getFeaturedProjects } from '../../config/site'
+import { getCarouselProjects, marqueePhrases } from '../../config/site'
 
 export default function Home() {
-  const featured = useMemo(() => getFeaturedProjects(), [])
+  const featured = useMemo(() => getCarouselProjects(), [])
 
   return (
-    <div>
+    <>
       <HeroPortal />
-      <RainbowMarquee />
-      <FallingLettersShowcase text="MINDSET OVER TEMPLATES" />
+      <RainbowMarquee items={marqueePhrases} />
       <StatsAuditorium />
-      <CapabilitiesClipDeck />
-      <WorkParallaxShowcase projects={featured} />
+      <FeaturedProjects projects={featured} />
+      <CapabilitiesBento />
       <ProcessLineReveal />
       <TestimonialWordHaze />
       <CTAFieldPulse />
-    </div>
+    </>
   )
 }

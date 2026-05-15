@@ -5,15 +5,15 @@ import { useReducedMotion } from '../../motion/useReducedMotion'
 
 const variants = {
   primary:
-    'bg-[color:var(--color-brand-navy)] text-white shadow-lg shadow-[color:color-mix(in_oklab,var(--color-brand-navy)_30%,transparent)] ring-1 ring-[color:color-mix(in_oklab,var(--color-brand-navy)_25%,transparent)] hover:brightness-110',
+    'bg-accent text-white shadow-lg shadow-indigo-500/25 ring-1 ring-indigo-600/20 hover:bg-[color:var(--color-accent-hover)]',
   rainbow:
-    'bg-rainbow-strip text-white shadow-lg shadow-[color:color-mix(in_oklab,var(--color-brand-blue)_25%,transparent)] ring-1 ring-black/10 hover:brightness-105',
+    'bg-accent text-white shadow-lg shadow-indigo-500/25 ring-1 ring-indigo-600/15 hover:bg-[color:var(--color-accent-hover)]',
   ghost:
-    'border border-brand bg-white/80 text-[color:var(--color-ink)] shadow-sm backdrop-blur-sm hover:border-[color:var(--color-brand-cyan)] hover:bg-surface-soft',
-  soft: 'bg-[color:var(--color-brand-navy)] text-white shadow-md hover:brightness-110',
+    'border border-brand bg-white text-ink shadow-sm backdrop-blur-sm hover:border-indigo-200 hover:bg-accent-soft',
+  soft: 'bg-[color:var(--color-surface-dark)] text-white shadow-md hover:bg-slate-800',
 }
 
-export default function ButtonLink({ to, children, variant = 'primary', className = '', magnetic = true }) {
+export default function ButtonLink({ to, children, variant = 'primary', className = '', magnetic = true, cursorHover = false }) {
   const wrap = useRef(null)
   const inner = useRef(null)
   const reduced = useReducedMotion()
@@ -44,11 +44,11 @@ export default function ButtonLink({ to, children, variant = 'primary', classNam
   }, [magnetic, reduced])
 
   const base =
-    'group relative isolate inline-flex overflow-hidden rounded-full font-display text-sm font-extrabold tracking-tight transition-[box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-brand-blue)] focus-visible:ring-offset-2'
+    'group relative isolate inline-flex overflow-hidden rounded-full font-display text-sm font-semibold tracking-tight transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)] focus-visible:ring-offset-2'
 
   return (
     <span ref={wrap} className={magnetic && !reduced ? 'inline-flex' : 'contents'}>
-      <Link to={to} data-cursor="hover" className={`${base} ${variants[variant] ?? variants.primary}`}>
+      <Link to={to} {...(cursorHover ? { 'data-cursor': 'hover' } : {})} className={`${base} ${variants[variant] ?? variants.primary}`}>
         <span
           ref={inner}
           className={`relative inline-flex w-full items-center justify-center gap-2 px-6 py-3.5 will-change-transform ${className}`}
