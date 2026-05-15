@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Funnel Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Funnel Display", ui-sans-serif, system-ui, sans-serif;
+
+  --color-surface: #ffffff;
+  --color-ink: #0f172a;
+  --color-ink-muted: #475569;
+  --color-border: #e2e8f0;
+  --color-soft: #f8fafc;
+
+  --color-r-500: #ef4444;
+  --color-o-500: #f97316;
+  --color-y-500: #ca8a04;
+  --color-g-500: #22c55e;
+  --color-b-500: #3b82f6;
+  --color-i-500: #6366f1;
+  --color-v-500: #a855f7;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+  }
+
+  body {
+    @apply m-0 min-h-dvh bg-white text-slate-900;
+  }
+
+  html.gm-cursor-none body {
+    cursor: none;
+  }
+
+  @media (max-width: 1023px) {
+    html.gm-cursor-none body {
+      cursor: auto;
+    }
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-b-500) 28%, white);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-indigo-500;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .animate-marquee {
+    animation: marquee 38s linear infinite;
+  }
+
+  .text-gradient-rainbow {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-r-500),
+      var(--color-o-500),
+      var(--color-y-500),
+      var(--color-g-500),
+      var(--color-b-500),
+      var(--color-i-500),
+      var(--color-v-500)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .border-gradient-rainbow {
+    border-image: linear-gradient(
+      90deg,
+      var(--color-r-500),
+      var(--color-o-500),
+      var(--color-y-500),
+      var(--color-g-500),
+      var(--color-b-500),
+      var(--color-i-500),
+      var(--color-v-500)
+    )
+      1;
+  }
+
+  .bg-rainbow-strip {
+    background: linear-gradient(
+      90deg,
+      var(--color-r-500),
+      var(--color-o-500),
+      var(--color-y-500),
+      var(--color-g-500),
+      var(--color-b-500),
+      var(--color-i-500),
+      var(--color-v-500)
+    );
+  }
+
+  .mesh-rainbow {
+    background:
+      radial-gradient(900px 420px at 12% 8%, color-mix(in oklab, var(--color-r-500) 18%, white), transparent 60%),
+      radial-gradient(760px 380px at 88% 12%, color-mix(in oklab, var(--color-v-500) 16%, white), transparent 58%),
+      radial-gradient(700px 360px at 70% 92%, color-mix(in oklab, var(--color-b-500) 16%, white), transparent 55%),
+      radial-gradient(640px 320px at 18% 88%, color-mix(in oklab, var(--color-g-500) 14%, white), transparent 55%),
+      linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  }
+}
