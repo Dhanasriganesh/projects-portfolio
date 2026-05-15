@@ -41,7 +41,7 @@ export default function RainbowMarquee({ items = DEFAULT_PHRASES }) {
   }, [reduced])
 
   return (
-    <div ref={root} className="relative isolate overflow-x-clip border-y border-slate-200/90 bg-white py-4">
+    <div ref={root} className="relative isolate overflow-x-clip border-y border-brand bg-white py-4">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
       <div className="overflow-x-clip">
@@ -52,10 +52,10 @@ export default function RainbowMarquee({ items = DEFAULT_PHRASES }) {
           {doubled.map((label, i) => (
             <span
               key={`${label}-${i}`}
-              className="font-display text-[clamp(1.15rem,2.6vw,1.85rem)] font-extrabold tracking-tight text-gradient-rainbow"
+              className="font-display text-[clamp(1.15rem,2.6vw,1.85rem)] font-extrabold tracking-tight text-accent"
             >
               {label}
-              <span className="mx-6 text-slate-300">·</span>
+              <span className="mx-6 text-black/30">·</span>
             </span>
           ))}
         </div>

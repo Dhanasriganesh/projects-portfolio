@@ -1,5 +1,5 @@
 import { useLayoutEffect, useMemo, useRef } from 'react'
-import { rainbow } from '../../config/brand'
+import { grayScale } from '../../config/brand'
 import { ensureGsapPlugins, gsap } from '../../motion/ensureGsap'
 import { useReducedMotion } from '../../motion/useReducedMotion'
 
@@ -23,7 +23,7 @@ export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' })
           start: 'top top',
           // vh = viewport-based pin length (avoids +=N% scaling with section height and the empty gap bug).
           // 260vh matches the earlier ~260% * viewport pacing — slower than the temporary 155vh fix.
-          end: '+=260vh',
+          end: '+=140vh',
           pin: true,
           scrub: 1.05,
           anticipatePin: 1,
@@ -51,8 +51,8 @@ export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' })
 
   if (reduced) {
     return (
-      <section className="border-y border-slate-200 bg-white py-24">
-        <div className="mx-auto max-w-[min(100%,90rem)] px-3 text-center font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:px-4 sm:text-5xl">
+      <section className="border-y border-brand bg-white py-24">
+        <div className="mx-auto max-w-[min(100%,90rem)] px-3 text-center font-display text-4xl font-extrabold tracking-tight text-ink sm:px-4 sm:text-5xl">
           {text}
         </div>
       </section>
@@ -63,7 +63,7 @@ export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' })
     <section ref={wrap} className="relative bg-white">
       <div className="sticky top-0 flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-3 sm:px-4">
         <p className="sr-only">{text}</p>
-        <p className="mb-10 max-w-xl text-center text-sm font-semibold uppercase tracking-[0.35em] text-slate-500">
+        <p className="mb-10 max-w-xl text-center text-sm font-semibold uppercase tracking-[0.35em] text-ink-muted">
           Scroll — letters surrender one by one
         </p>
         <div className="flex max-w-[min(98vw,90rem)] flex-wrap justify-center gap-y-3 px-2 text-center font-display text-[clamp(2.4rem,9.2vw,7rem)] font-extrabold leading-[0.92] tracking-tight sm:px-0">
@@ -75,14 +75,14 @@ export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' })
                 key={`c-${i}`}
                 data-fall-char
                 className="inline-block will-change-transform drop-shadow-sm"
-                style={{ color: rainbow[i % rainbow.length] }}
+                style={{ color: grayScale[i % grayScale.length] }}
               >
                 {ch}
               </span>
             ),
           )}
         </div>
-        <p className="mt-14 max-w-lg text-center text-base leading-relaxed text-slate-600">
+        <p className="mt-14 max-w-lg text-center text-base leading-relaxed text-ink-muted">
           This is the kind of scroll choreography we bring to flagship launches — physics, pacing, and restraint.
         </p>
       </div>

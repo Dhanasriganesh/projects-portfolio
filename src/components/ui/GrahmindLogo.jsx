@@ -48,7 +48,7 @@ export default function GrahmindLogo({ to = '/', size = 'md', className = '', on
   if (to == null) return mark
 
   return (
-    <Link to={to} data-cursor="hover" className="block max-w-full shrink-0" onClick={onClick}>
+    <Link to={to} className="block max-w-full shrink-0" onClick={onClick}>
       {mark}
     </Link>
   )

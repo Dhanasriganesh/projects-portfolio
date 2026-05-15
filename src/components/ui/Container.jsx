@@ -1,8 +1,8 @@
-/** Site-wide horizontal bounds — wider max + tighter gutters to reduce side empty space */
-export default function Container({ children, className = '' }) {
+/** Site-wide horizontal bounds */
+export default function Container({ children, className = '', as: Tag = 'div' }) {
   return (
-    <div className={`mx-auto w-full max-w-[min(100%,90rem)] px-3 sm:px-4 md:px-5 lg:px-6 ${className}`}>
+    <Tag className={`mx-auto w-full max-w-[min(100%,82rem)] px-4 sm:px-6 lg:px-8 ${className}`}>
       {children}
-    </div>
+    </Tag>
   )
 }

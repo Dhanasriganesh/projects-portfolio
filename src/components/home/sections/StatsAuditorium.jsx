@@ -89,42 +89,42 @@ export default function StatsAuditorium() {
   }, [reduced])
 
   return (
-    <section ref={root} className="relative overflow-hidden border-y border-slate-200 bg-gradient-to-b from-white via-slate-50/40 to-white py-16 sm:py-20">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(99,102,241,0.07),transparent_55%)]" aria-hidden />
+    <section ref={root} className="relative overflow-hidden border-y border-brand bg-gradient-to-b from-white via-indigo-50/60 to-white py-16 sm:py-20">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(0,0,0,0.05),transparent_55%)]" aria-hidden />
       <Container>
         <div className="mb-10 px-1">
           <div
             data-stat-rail
-            className="h-1 w-full max-w-md rounded-full bg-gradient-to-r from-red-500 via-amber-400 via-emerald-500 via-sky-500 to-violet-600 will-change-transform"
+            className="h-1 w-full max-w-md rounded-full bg-gradient-to-r from-indigo-200 via-indigo-500 to-indigo-700 will-change-transform"
             aria-hidden
           />
-          <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.35em] text-slate-500">Signal density</p>
-          <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">
+          <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.35em] text-ink-muted">Signal density</p>
+          <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
             Numbers that travel with us into the room
           </h2>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 [perspective:1400px]">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 [perspective:1400px]">
           {stats.map((s, i) => (
             <div
               key={s.label}
               data-stat-card
-              className="group relative overflow-hidden rounded-[1.35rem] border border-slate-200/90 bg-white/90 p-7 shadow-md ring-1 ring-slate-200/50 [transform-style:preserve-3d] will-change-transform"
+              className="group relative overflow-hidden rounded-[1.35rem] border border-brand bg-white/90 p-7 shadow-md ring-1 ring-indigo-200 [transform-style:preserve-3d] will-change-transform"
             >
               <div
                 className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-25 blur-2xl transition duration-500 group-hover:opacity-45"
                 style={{
-                  background: `conic-gradient(from ${i * 45}deg, var(--color-brand-red), var(--color-brand-orange), var(--color-brand-green), var(--color-brand-blue), var(--color-brand-purple), var(--color-brand-red))`,
+                  background: `conic-gradient(from ${i * 45}deg, #eef2ff, #818cf8, #4f46e5, #4338ca, #eef2ff)`,
                 }}
                 aria-hidden
               />
               <div
                 data-stat-value={s.value}
-                className="relative font-display text-4xl font-extrabold tracking-tight text-slate-950 tabular-nums sm:text-5xl"
+                className="relative font-display text-4xl font-extrabold tracking-tight text-ink tabular-nums sm:text-5xl"
               >
                 {parseStatValue(s.value).type === 'text' ? s.value : '0'}
               </div>
-              <div className="relative mt-3 text-sm font-bold text-slate-600">{s.label}</div>
+              <div className="relative mt-3 text-sm font-bold text-ink-muted">{s.label}</div>
             </div>
           ))}
         </div>

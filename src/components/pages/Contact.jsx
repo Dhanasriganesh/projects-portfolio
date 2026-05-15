@@ -1,87 +1,108 @@
 import { useState } from 'react'
 import Container from '../ui/Container'
+import Section from '../ui/Section'
+import PageHero from '../ui/PageHero'
 import ButtonLink from '../ui/ButtonLink'
 import RevealOnScroll from '../home/RevealOnScroll'
-import { company } from '../../config/site'
+import { company, contact } from '../../config/site'
 
 export default function Contact() {
   const [status, setStatus] = useState('idle')
 
   function onSubmit(e) {
     e.preventDefault()
+    const fd = new FormData(e.currentTarget)
+    const name = String(fd.get('name') ?? '').trim()
+    const email = String(fd.get('email') ?? '').trim()
+    const org = String(fd.get('company') ?? '').trim() || '—'
+    const message = String(fd.get('message') ?? '').trim()
+
+    const body = [
+      'Hello Grahmind,',
+      '',
+      'Project inquiry (portfolio site)',
+      '',
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Company: ${org}`,
+      '',
+      message,
+    ].join('\n')
+
+    const url = `${contact.whatsappHref}?text=${encodeURIComponent(body)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+
     setStatus('sent')
-    e.target.reset()
-    window.setTimeout(() => setStatus('idle'), 4500)
+    e.currentTarget.reset()
+    window.setTimeout(() => setStatus('idle'), 6000)
   }
 
   return (
     <div>
-      <section className="mesh-rainbow border-b border-slate-200">
-        <Container className="py-16 sm:py-20 lg:py-28">
-          <RevealOnScroll className="max-w-3xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-slate-600">Contact</p>
-            <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Let&apos;s make your next launch <span className="text-gradient-rainbow">unforgettable</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
-              Tell us about timelines, stakeholders, and success metrics. We will respond with next steps and a proposed
-              workshop outline.
-            </p>
-          </RevealOnScroll>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title={
+          <>
+            Have questions? <span className="text-accent">We&apos;re here to help.</span>
+          </>
+        }
+        lead={contact.pageLead}
+      />
 
-      <section className="bg-white py-14 sm:py-16">
-        <Container>
+      <Section spacing="md">
           <div className="grid gap-10 lg:grid-cols-12">
             <aside className="lg:col-span-5">
               <RevealOnScroll>
-              <div className="rounded-[2rem] border border-slate-200/90 bg-white/90 p-8 shadow-lg ring-1 ring-slate-200/60 backdrop-blur-sm">
-                <div className="text-sm font-bold text-slate-500">Direct lines</div>
+              <div className="card-surface p-8">
+                <div className="text-sm font-bold text-ink-muted">Direct lines</div>
                 <div className="mt-4 space-y-3 text-sm">
                   <div>
-                    <div className="text-xs font-extrabold uppercase tracking-widest text-slate-500">Email</div>
+                    <div className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">Email</div>
                     <a
-                      data-cursor="hover"
-                      className="mt-1 inline-flex font-bold text-indigo-700 hover:text-indigo-900"
+                      className="mt-1 inline-flex font-bold text-ink hover:text-ink"
                       href={`mailto:${company.email}`}
                     >
                       {company.email}
                     </a>
                   </div>
                   <div>
-                    <div className="text-xs font-extrabold uppercase tracking-widest text-slate-500">Phone</div>
-                    <div className="mt-1 font-semibold text-slate-800">{company.phone}</div>
+                    <div className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">Phone</div>
+                    <a
+                      className="mt-1 inline-flex font-semibold text-ink hover:text-accent"
+                      href={company.phoneHref}
+                    >
+                      {company.phone}
+                    </a>
                   </div>
                   <div>
-                    <div className="text-xs font-extrabold uppercase tracking-widest text-slate-500">Coverage</div>
-                    <div className="mt-1 font-semibold text-slate-800">{company.location}</div>
+                    <div className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">Coverage</div>
+                    <div className="mt-1 font-semibold text-ink">{company.location}</div>
                   </div>
                 </div>
 
-                <div className="mt-8 rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-200">
-                  <div className="text-xs font-extrabold uppercase tracking-widest text-slate-500">What to attach</div>
-                  <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                <div className="mt-8 rounded-2xl bg-accent-soft p-5 ring-1 ring-indigo-200">
+                  <div className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">What to attach</div>
+                  <ul className="mt-3 space-y-2 text-sm text-ink-muted">
                     <li className="flex gap-2">
-                      <span className="text-red-500" aria-hidden>
+                      <span className="text-ink-muted" aria-hidden>
                         ●
                       </span>
                       Brief or RFP (PDF)
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-amber-500" aria-hidden>
+                      <span className="text-ink-muted" aria-hidden>
                         ●
                       </span>
                       Product links and analytics context
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-emerald-500" aria-hidden>
+                      <span className="text-ink-muted" aria-hidden>
                         ●
                       </span>
                       Brand guidelines (if any)
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-indigo-500" aria-hidden>
+                      <span className="text-ink-muted" aria-hidden>
                         ●
                       </span>
                       Security / compliance constraints
@@ -102,58 +123,58 @@ export default function Contact() {
               <RevealOnScroll>
               <form
                 onSubmit={onSubmit}
-                className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm ring-1 ring-slate-200/70 sm:p-10"
+                className="rounded-[2rem] border border-brand bg-white p-8 shadow-sm ring-1 ring-indigo-200 sm:p-10"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h2 className="font-display text-2xl font-extrabold text-slate-900">Project inquiry</h2>
-                    <p className="mt-2 text-sm text-slate-600">
-                      Demo form — wire to your backend or form provider when ready.
+                    <h2 className="font-display text-2xl font-extrabold text-ink">Project inquiry</h2>
+                    <p className="mt-2 text-sm text-ink-muted">
+                      Your inquiry opens in WhatsApp with the details pre-filled — tap send to reach our team.
                     </p>
                   </div>
-                  <span className="rounded-full bg-lime-50 px-3 py-1 text-xs font-extrabold text-lime-900 ring-1 ring-lime-100">
+                  <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-extrabold text-ink ring-1 ring-indigo-200">
                     Fast response
                   </span>
                 </div>
 
                 <div className="mt-8 grid gap-5 sm:grid-cols-2">
                   <label className="block sm:col-span-1">
-                    <span className="text-xs font-extrabold uppercase tracking-widest text-slate-500">Name</span>
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">Name</span>
                     <input
                       required
                       name="name"
                       autoComplete="name"
-                      className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm outline-none ring-0 placeholder:text-slate-400 focus:border-indigo-400"
+                      className="mt-2 w-full rounded-2xl border border-brand bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm outline-none ring-0 placeholder:text-black/40 focus:border-black/50"
                       placeholder="Alex Rivera"
                     />
                   </label>
                   <label className="block sm:col-span-1">
-                    <span className="text-xs font-extrabold uppercase tracking-widest text-slate-500">Work email</span>
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">Work email</span>
                     <input
                       required
                       name="email"
                       type="email"
                       autoComplete="email"
-                      className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-indigo-400"
+                      className="mt-2 w-full rounded-2xl border border-brand bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm outline-none placeholder:text-black/40 focus:border-black/50"
                       placeholder="you@company.com"
                     />
                   </label>
                   <label className="block sm:col-span-2">
-                    <span className="text-xs font-extrabold uppercase tracking-widest text-slate-500">Company</span>
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">Company</span>
                     <input
                       name="company"
                       autoComplete="organization"
-                      className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-indigo-400"
-                      placeholder="Grahmind client org"
+                      className="mt-2 w-full rounded-2xl border border-brand bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm outline-none placeholder:text-black/40 focus:border-black/50"
+                      placeholder="Your company"
                     />
                   </label>
                   <label className="block sm:col-span-2">
-                    <span className="text-xs font-extrabold uppercase tracking-widest text-slate-500">What are you building?</span>
+                    <span className="text-xs font-extrabold uppercase tracking-widest text-ink-muted">What are you building?</span>
                     <textarea
                       required
                       name="message"
                       rows={6}
-                      className="mt-2 w-full resize-y rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-indigo-400"
+                      className="mt-2 w-full resize-y rounded-2xl border border-brand bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm outline-none placeholder:text-black/40 focus:border-black/50"
                       placeholder="Goals, timeline, stakeholders, links, constraints…"
                     />
                   </label>
@@ -162,27 +183,25 @@ export default function Contact() {
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <button
                     type="submit"
-                    data-cursor="hover"
-                    className="font-display inline-flex w-full items-center justify-center rounded-full bg-rainbow-strip px-6 py-3.5 text-sm font-extrabold tracking-tight text-white shadow-lg ring-1 ring-black/10 transition hover:brightness-105 sm:w-auto"
+                    className="font-display inline-flex w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 text-sm font-extrabold tracking-tight text-white shadow-lg shadow-indigo-500/25 ring-1 ring-indigo-600/20 transition hover:bg-[color:var(--color-accent-hover)] sm:w-auto"
                   >
                     Send message
                   </button>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-ink-muted">
                     By submitting, you agree to be contacted about this inquiry. No spam — ever.
                   </p>
                 </div>
 
                 {status === 'sent' ? (
-                  <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-900">
-                    Thanks — your message is recorded for this demo. Connect the form to email or CRM next.
+                  <div className="mt-6 rounded-2xl border border-brand bg-accent-soft px-4 py-3 text-sm font-semibold text-ink">
+                    WhatsApp opened — tap send in the chat to deliver your inquiry.
                   </div>
                 ) : null}
               </form>
               </RevealOnScroll>
             </div>
           </div>
-        </Container>
-      </section>
+      </Section>
     </div>
   )
 }

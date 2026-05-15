@@ -62,10 +62,10 @@ export default function CTAFieldPulse() {
       <Container>
         <div
           data-cta-field
-          className="relative overflow-hidden rounded-[2rem] border border-slate-900/15 bg-slate-950 px-8 py-14 shadow-2xl sm:px-14 sm:py-16"
+          className="relative overflow-hidden rounded-[2rem] border border-indigo-500/20 bg-[color:var(--color-surface-dark)] px-8 py-14 shadow-2xl shadow-indigo-950/30 sm:px-14 sm:py-16"
           style={{
             backgroundImage:
-              'linear-gradient(125deg, #0f172a 0%, #1e1b4b 18%, #0f172a 35%, #312e81 52%, #0f172a 70%, #134e4a 88%, #0f172a 100%)',
+              'linear-gradient(125deg, #0f172a 0%, #1e293b 40%, #0f172a 100%)',
             backgroundSize: '240% 100%',
             backgroundPosition: '0% 50%',
           }}
@@ -74,8 +74,8 @@ export default function CTAFieldPulse() {
             data-cta-inner
             className="relative will-change-transform [transform-style:preserve-3d]"
           >
-            <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-rainbow-strip opacity-45 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-cyan-500/35 blur-3xl" />
+            <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-indigo-600/25 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-indigo-500/15 blur-3xl" />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,transparent_0%,rgba(255,255,255,0.06)_50%,transparent_100%)] mix-blend-overlay" />
 
             <div className="relative grid gap-10 lg:grid-cols-12 lg:items-center">
@@ -91,11 +91,10 @@ export default function CTAFieldPulse() {
               </div>
               <div className="lg:col-span-4 lg:justify-self-end">
                 <div className="flex flex-col gap-4">
-                  <ButtonLink to="/contact" variant="rainbow" className="w-full justify-center px-8">
+                  <ButtonLink to="/contact" variant="primary" className="w-full justify-center px-8">
                     Talk to {company.name}
                   </ButtonLink>
                   <Link
-                    data-cursor="hover"
                     to="/work"
                     className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-extrabold text-white backdrop-blur-sm hover:bg-white/10"
                   >

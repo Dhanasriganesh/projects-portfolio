@@ -71,16 +71,16 @@ export default function WorkParallaxShowcase({ projects: featured }) {
   }, [reduced, featuredKey])
 
   return (
-    <section ref={root} className="relative overflow-hidden border-y border-slate-200/80 py-20 sm:py-28 mesh-rainbow">
+    <section ref={root} className="relative overflow-hidden border-y border-brand py-20 sm:py-28 mesh-rainbow">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(105deg,transparent_40%,rgba(255,255,255,0.65)_48%,transparent_56%)]" aria-hidden />
       <Container className="relative">
         <div data-work-head className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end will-change-transform [transform-style:preserve-3d]">
           <div className="max-w-2xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-slate-600">Selected work</p>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Depth you can <span className="text-gradient-rainbow">feel</span> in the scroll
+            <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-ink-muted">Selected work</p>
+            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+              Depth you can <span className="text-accent">feel</span> in the scroll
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-slate-600">
+            <p className="mt-5 text-lg leading-relaxed text-ink-muted">
               Live platforms across the USA, India, and Germany — plus mobile products in beta.
             </p>
           </div>
@@ -94,27 +94,26 @@ export default function WorkParallaxShowcase({ projects: featured }) {
             <TiltCard key={p.slug} strength={11} className="h-full">
               <article
                 data-work-card
-                className={`relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white/95 shadow-xl ring-1 ring-slate-200/50 backdrop-blur-sm will-change-transform [transform-style:preserve-3d] ${p.accent} border-l-[5px]`}
+                className={`relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-brand bg-white/95 shadow-xl ring-1 ring-indigo-200 backdrop-blur-sm will-change-transform [transform-style:preserve-3d] ${p.accent} border-l-[5px]`}
               >
                 <div
                   data-work-parallax
                   className="relative flex h-full flex-col p-8 will-change-transform"
                 >
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/85 via-transparent to-slate-50/50" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/85 via-transparent to-indigo-50/80" />
                 <div className="relative flex items-center justify-between gap-3">
                   <span
                     className={`inline-flex items-center rounded-full px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider ring-1 ${p.pill}`}
                   >
                     {p.category}
                   </span>
-                  <span className="text-xs font-bold text-slate-500">{p.year}</span>
+                  <span className="text-xs font-bold text-ink-muted">{p.year}</span>
                 </div>
-                <h3 className="relative mt-6 font-display text-xl font-extrabold tracking-tight text-slate-950">{p.title}</h3>
-                <p className="relative mt-4 flex-1 text-sm leading-relaxed text-slate-600">{p.summary}</p>
+                <h3 className="relative mt-6 font-display text-xl font-extrabold tracking-tight text-ink">{p.title}</h3>
+                <p className="relative mt-4 flex-1 text-sm leading-relaxed text-ink-muted">{p.summary}</p>
                 {p.href ? (
                   <a
-                    data-cursor="hover"
-                    className="relative mt-8 inline-flex items-center gap-2 text-sm font-extrabold text-[color:var(--color-brand-blue)] hover:text-[color:var(--color-brand-navy)]"
+                    className="relative mt-8 inline-flex items-center gap-2 text-sm font-extrabold text-ink hover:text-ink"
                     href={p.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -123,7 +122,7 @@ export default function WorkParallaxShowcase({ projects: featured }) {
                     <span aria-hidden>↗</span>
                   </a>
                 ) : (
-                  <span className="relative mt-8 inline-flex rounded-full bg-amber-50 px-3 py-1.5 text-xs font-extrabold text-amber-900 ring-1 ring-amber-100">
+                  <span className="relative mt-8 inline-flex rounded-full bg-accent-soft px-3 py-1.5 text-xs font-extrabold text-ink ring-1 ring-indigo-200">
                     Beta · In development
                   </span>
                 )}
