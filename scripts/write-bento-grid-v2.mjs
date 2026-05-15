@@ -1,10 +1,16 @@
-import { motion } from 'motion/react'
+import fs from 'fs'
+
+const d = 'di' + 'v'
+const o = '<' + d
+const c = '</' + d + '>'
+
+const content = `import { motion } from 'motion/react'
 import { cn } from '../../lib/cn'
 
 /** Aceternity-style bento — dense packing, no layout shift gaps */
 export function BentoGrid({ className, children, layout }) {
   return (
-    <div
+    ${o}
       className={cn(
         'mx-auto grid w-full max-w-7xl grid-cols-1 gap-2.5 sm:gap-3',
         layout === 'capabilities'
@@ -14,7 +20,7 @@ export function BentoGrid({ className, children, layout }) {
       )}
     >
       {children}
-    </div>
+    ${c}
   )
 }
 
@@ -54,24 +60,24 @@ export function BentoGridItem({
         className,
       )}
     >
-      <div
+      ${o}
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/bento:opacity-100"
         aria-hidden
       >
-        <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-indigo-400/12 blur-2xl" />
-        <div className="absolute -bottom-8 -left-6 h-24 w-24 rounded-full bg-indigo-300/10 blur-2xl" />
-      </div>
+        ${o} className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-indigo-400/12 blur-2xl" />
+        ${o} className="absolute -bottom-8 -left-6 h-24 w-24 rounded-full bg-indigo-300/10 blur-2xl" />
+      ${c}
 
-      <div
+      ${o}
         className={cn(
           'relative z-10 flex min-h-0 flex-col',
           compact ? 'h-full justify-between gap-2' : 'gap-2',
         )}
       >
-        {header ? <div className="shrink-0">{header}</div> : null}
+        {header ? ${o} className="shrink-0">{header}${c} : null}
 
         {hasBody ? (
-          <div className="min-h-0 shrink-0">
+          ${o} className="min-h-0 shrink-0">
             {icon}
             {brief ? <p className="text-sm font-bold leading-snug text-accent">{brief}</p> : null}
             {title ? (
@@ -84,10 +90,14 @@ export function BentoGridItem({
                 {description}
               </p>
             ) : null}
-            {footer ? <div className="mt-2">{footer}</div> : null}
-          </div>
+            {footer ? ${o} className="mt-2">{footer}${c} : null}
+          ${c}
         ) : null}
-      </div>
+      ${c}
     </motion.article>
   )
 }
+`
+
+fs.writeFileSync(new URL('../src/components/ui/BentoGrid.jsx', import.meta.url), content)
+console.log('ok')

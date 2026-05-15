@@ -125,18 +125,24 @@ export const services = [
   },
 ]
 
-/** Bento tile layout — order + spans tuned for dense 3-column pack (no holes) */
+/** Bento tile layout — grid areas defined in index.css (.bento-capabilities-grid) */
 export const bentoShowcase = [
-  { type: 'capability', serviceId: 'web', span: 'md:col-span-2 md:row-span-2' },
-  { type: 'stats', span: 'md:col-span-1 md:row-span-2' },
-  { type: 'capability', serviceId: 'mobile', span: 'md:col-span-2 md:row-span-1' },
-  { type: 'capability', serviceId: 'ai', span: 'md:col-span-1 md:row-span-2' },
-  { type: 'process', span: 'md:col-span-2 md:row-span-1' },
-  { type: 'capability', serviceId: 'design', span: 'md:col-span-1 md:row-span-1' },
-  { type: 'capability', serviceId: 'fullstack', span: 'md:col-span-1 md:row-span-1' },
-  { type: 'capability', serviceId: 'marketing', span: 'md:col-span-1 md:row-span-1' },
-  { type: 'capability', serviceId: 'support', span: 'md:col-span-3 md:row-span-1' },
+  { type: 'capability', serviceId: 'web', area: 'web' },
+  { type: 'stats', area: 'stats' },
+  { type: 'capability', serviceId: 'mobile', area: 'mobile' },
+  { type: 'capability', serviceId: 'fullstack', area: 'fullstack' },
+  { type: 'capability', serviceId: 'ai', area: 'ai' },
+  { type: 'process', area: 'process' },
+  { type: 'capability', serviceId: 'design', area: 'design' },
+  { type: 'capability', serviceId: 'marketing', area: 'marketing' },
+  { type: 'capability', serviceId: 'support', area: 'support' },
 ]
+
+const BENTO_TALL_AREAS = new Set(['web', 'stats', 'ai'])
+
+export function isBentoTallTile(area) {
+  return BENTO_TALL_AREAS.has(area)
+}
 
 export const stats = [
   { label: 'Projects delivered', value: '15+' },

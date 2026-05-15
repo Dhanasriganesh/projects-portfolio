@@ -178,6 +178,21 @@
       linear-gradient(180deg, var(--color-surface-soft) 0%, var(--color-surface) 100%);
   }
 
+  /* Capabilities bento — fixed areas, no grid holes */
+  @media (min-width: 768px) {
+    .bento-capabilities-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(6, minmax(8.25rem, auto));
+      grid-template-areas:
+        "web web stats"
+        "web web stats"
+        "mobile fullstack ai"
+        "process process ai"
+        "design marketing ai"
+        "support support support";
+    }
+  }
+
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white;
     background-color: var(--color-accent);
