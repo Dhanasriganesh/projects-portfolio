@@ -19,7 +19,7 @@ export default function FeaturedProjects({ projects }) {
               Flagship <span className="text-accent">deliveries</span>
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-ink-muted">
-              Each project ships with a clear brief, live link when available, and context for the market it serves.
+              Live client work across the USA, India, and Germany — use the arrows to browse.
             </p>
           </div>
           <ButtonLink to="/work" variant="ghost" className="shrink-0 px-8">

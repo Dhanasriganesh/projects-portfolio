@@ -164,10 +164,10 @@ export default function CapabilitiesBento() {
         <div className="max-w-3xl">
           <p className="text-xs font-extrabold uppercase tracking-[0.35em] text-ink-muted">What we do</p>
           <h2 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
-            Capabilities in a <span className="text-accent">living bento</span>
+            Services & <span className="text-accent">delivery</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-ink-muted">
-            Hover any tile to focus — services, delivery stats, and our process in one interactive studio view.
+            Web, mobile, AI, design, marketing, and support — plus the metrics and process behind how we ship.
           </p>
         </div>
 

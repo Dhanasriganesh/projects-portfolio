@@ -153,6 +153,7 @@ async function main() {
     marqueePhrases: existing.marqueePhrases,
     values: existing.values,
     process: existing.process,
+    projectBriefs: existing.projectBriefs,
     projects: existing.projects,
     hero: existing.hero,
     contact: existing.contact,

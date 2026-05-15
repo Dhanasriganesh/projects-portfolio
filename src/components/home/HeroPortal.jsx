@@ -117,24 +117,21 @@ export default function HeroPortal() {
           {company.legalName} · Est. {company.founded}
         </div>
 
-        <h1 className="mt-10 max-w-[16ch] font-display text-[clamp(2.5rem,6.8vw,5.25rem)] font-bold leading-[0.98] tracking-tight text-ink">
+        <h1 className="mt-10 max-w-[18ch] font-display text-[clamp(2.35rem,6.2vw,4.75rem)] font-bold leading-[1.02] tracking-tight text-ink">
           <span data-hero-line className="block [perspective:1200px]">
-            {splitWord('Different', 'l1a')}
+            {splitWord('Transforming', 'l1a')}
           </span>
           <span data-hero-line className="mt-1 block [perspective:1200px]">
-            <span className="text-accent">{splitWord('world', 'l2a')}</span>
-            {splitWord('.', 'l2b')}
+            <span className="text-accent">{splitWord('businesses', 'l2a')}</span>
+            {splitWord(' through', 'l2b')}
           </span>
           <span data-hero-line className="mt-1 block text-ink [perspective:1200px]">
-            {splitWord('Same discipline.', 'l3')}
+            {splitWord('innovative technology.', 'l3')}
           </span>
         </h1>
 
-        <p
-          data-hero-sub
-          className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl"
-        >
-          {company.tagline} — {company.blurb}
+        <p data-hero-sub className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl">
+          {company.blurb}
         </p>
 
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -150,13 +147,12 @@ export default function HeroPortal() {
           </span>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center gap-6 text-sm font-semibold text-ink-muted">
-          <span data-hero-cta className="inline-flex items-center gap-2">
-            <span className="h-px w-10 bg-indigo-300" aria-hidden />
-            Scroll to feel depth
-          </span>
-          <Link data-cursor="hover" className="text-ink underline decoration-indigo-300/30 underline-offset-4 hover:decoration-indigo-400/60" to="/about">
-            How we think
+        <div className="mt-16">
+          <Link
+            className="text-sm font-semibold text-ink underline decoration-indigo-300/40 underline-offset-4 hover:text-accent hover:decoration-indigo-400/70"
+            to="/about"
+          >
+            About Grahmind →
           </Link>
         </div>
       </Container>

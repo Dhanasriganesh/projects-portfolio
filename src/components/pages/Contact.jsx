@@ -11,9 +11,30 @@ export default function Contact() {
 
   function onSubmit(e) {
     e.preventDefault()
+    const fd = new FormData(e.currentTarget)
+    const name = String(fd.get('name') ?? '').trim()
+    const email = String(fd.get('email') ?? '').trim()
+    const org = String(fd.get('company') ?? '').trim() || '—'
+    const message = String(fd.get('message') ?? '').trim()
+
+    const body = [
+      'Hello Grahmind,',
+      '',
+      'Project inquiry (portfolio site)',
+      '',
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Company: ${org}`,
+      '',
+      message,
+    ].join('\n')
+
+    const url = `${contact.whatsappHref}?text=${encodeURIComponent(body)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+
     setStatus('sent')
-    e.target.reset()
-    window.setTimeout(() => setStatus('idle'), 4500)
+    e.currentTarget.reset()
+    window.setTimeout(() => setStatus('idle'), 6000)
   }
 
   return (
@@ -108,7 +129,7 @@ export default function Contact() {
                   <div>
                     <h2 className="font-display text-2xl font-extrabold text-ink">Project inquiry</h2>
                     <p className="mt-2 text-sm text-ink-muted">
-                      Demo form — wire to your backend or form provider when ready.
+                      Your inquiry opens in WhatsApp with the details pre-filled — tap send to reach our team.
                     </p>
                   </div>
                   <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-extrabold text-ink ring-1 ring-indigo-200">
@@ -144,7 +165,7 @@ export default function Contact() {
                       name="company"
                       autoComplete="organization"
                       className="mt-2 w-full rounded-2xl border border-brand bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm outline-none placeholder:text-black/40 focus:border-black/50"
-                      placeholder="Grahmind client org"
+                      placeholder="Your company"
                     />
                   </label>
                   <label className="block sm:col-span-2">
@@ -173,7 +194,7 @@ export default function Contact() {
 
                 {status === 'sent' ? (
                   <div className="mt-6 rounded-2xl border border-brand bg-accent-soft px-4 py-3 text-sm font-semibold text-ink">
-                    Thanks — your message is recorded for this demo. Connect the form to email or CRM next.
+                    WhatsApp opened — tap send in the chat to deliver your inquiry.
                   </div>
                 ) : null}
               </form>

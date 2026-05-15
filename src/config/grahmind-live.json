@@ -151,6 +151,25 @@
       "detail": "Confident launches, ongoing optimization, and support that keeps systems performing at their best."
     }
   ],
+  "projectBriefs": {
+    "tetraxai": "US AI consulting platform built for enterprise credibility.",
+    "nexusaisol": "Corporate AI consultancy site with strategy-led lead capture.",
+    "absnit": "Technology services brand and consulting platform.",
+    "nakitgroup": "IT group website with enterprise service lines.",
+    "eliteaisol": "Premium AI solutions positioning and conversion UX.",
+    "powder-legacy": "Natural powders e-commerce with product storytelling.",
+    "vastora-designs": "Interior design portfolio tuned for high-intent leads.",
+    "ssrchem": "B2B chemical solvents catalog for Telangana industry.",
+    "spectrum-electricals": "Electrical services portfolio with quote-ready flows.",
+    "shreebhima-caterers": "Wedding and events catering with menu-led booking.",
+    "smdb-gold": "Multi-branch gold retail operations software.",
+    "khaata-shares": "Private share-market business management platform.",
+    "fruit-delight": "Hyderabad fresh fruit bowls — mobile-first ordering.",
+    "thinkpoc": "Germany B2B mediator for cross-company workflows.",
+    "criczo": "Domestic cricket stats and match management (beta).",
+    "khaata-mobile": "Personal finance reconciliation app (beta).",
+    "musicz": "Mobile streaming experience in development (beta)."
+  },
   "projects": [
     {
       "slug": "tetraxai",
@@ -308,7 +327,9 @@
   ],
   "contact": {
     "pageTitle": "Have questions? We're here to help.",
-    "pageLead": "Call us for instant support, demo scheduling, or a quick consultation — or send a project brief and we will follow up with next steps.",
-    "formEndpoint": "https://grahmind.com/api/contact"
+    "pageLead": "Send a project brief via WhatsApp or reach us on email and phone — we respond within one business day.",
+    "whatsapp": "919603672059",
+    "whatsappDisplay": "+91 96036 72059",
+    "whatsappHref": "https://wa.me/919603672059"
   }
 }

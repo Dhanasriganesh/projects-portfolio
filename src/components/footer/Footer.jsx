@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Container from '../ui/Container'
 import GrahmindLogo from '../ui/GrahmindLogo'
 import { company, nav, projects } from '../../config/site'
+import ExternalSiteIcon from '../ui/ExternalSiteIcon'
 
 const TAGS = [
   { label: 'Strategy', bg: 'bg-accent-soft', text: 'text-accent', ring: 'ring-indigo-200' },
@@ -50,12 +51,14 @@ export default function Footer() {
                 ))}
                 <li>
                   <a
-                    className="text-sm font-semibold text-accent hover:text-[color:var(--color-accent-hover)]"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-[color:var(--color-accent-hover)]"
                     href={company.website}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Official website (opens in new tab)"
                   >
-                    Main site ↗
+                    <ExternalSiteIcon className="h-4 w-4" />
+                    <span>Official website</span>
                   </a>
                 </li>
               </ul>

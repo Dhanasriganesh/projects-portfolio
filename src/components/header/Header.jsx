@@ -13,6 +13,9 @@ import {
 } from '../ui/ResizableNavbar'
 import { company, nav } from '../../config/site'
 import { cn } from '../../lib/cn'
+import ExternalSiteIcon from '../ui/ExternalSiteIcon'
+
+const OFFICIAL_SITE_LABEL = 'Official website (opens in new tab)'
 
 const navItems = nav.map((item) => ({ name: item.label, link: item.to }))
 
@@ -52,8 +55,14 @@ export default function Header() {
         <NavItems items={navItems} />
 
         <div className="relative z-20 flex shrink-0 items-center gap-2">
-          <NavbarButton href={company.website} variant="secondary" className="hidden sm:inline-flex">
-            Main site ↗
+          <NavbarButton
+            href={company.website}
+            variant="secondary"
+            aria-label={OFFICIAL_SITE_LABEL}
+            title={OFFICIAL_SITE_LABEL}
+            className="hidden !px-3 sm:inline-flex"
+          >
+            <ExternalSiteIcon />
           </NavbarButton>
           <NavbarButton as={Link} to="/contact" variant="gradient">
             Book intro
@@ -73,8 +82,15 @@ export default function Header() {
               {item.name}
             </NavLink>
           ))}
-          <NavbarButton href={company.website} variant="secondary" className="mt-2 w-full" onClick={close}>
-            Main site ↗
+          <NavbarButton
+            href={company.website}
+            variant="secondary"
+            aria-label={OFFICIAL_SITE_LABEL}
+            className="mt-2 w-full gap-2.5 normal-case tracking-normal"
+            onClick={close}
+          >
+            <ExternalSiteIcon />
+            <span>Official website</span>
           </NavbarButton>
           <NavbarButton as={Link} to="/contact" variant="gradient" className="mt-2 w-full" onClick={close}>
             Book intro

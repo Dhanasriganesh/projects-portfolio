@@ -94,7 +94,7 @@ export function isBentoTallTile(area) {
 
 export const projects = live.projects.map((p, i) => ({
   ...p,
-  brief: live.projectBriefs[p.slug] ?? p.summary.split('—')[0].trim().slice(0, 88),
+  brief: live.projectBriefs?.[p.slug] ?? p.summary.split('—')[0].trim().slice(0, 88),
   bentoSpan: BENTO_SPANS[i % BENTO_SPANS.length],
   ...CARD_STYLES[i % CARD_STYLES.length],
 }))
@@ -158,7 +158,9 @@ export function getFeaturedProjects() {
 }
 
 export function getCarouselProjects() {
-  return carouselProjectSlugs.map((slug) => projects.find((item) => item.slug === slug)).filter(Boolean)
+  return carouselProjectSlugs
+    .map((slug) => projects.find((item) => item.slug === slug))
+    .filter((p) => p && p.href && p.year === 'Live')
 }
 
 export const workFilters = ['All', 'USA', 'India', 'Germany', 'Mobile']
