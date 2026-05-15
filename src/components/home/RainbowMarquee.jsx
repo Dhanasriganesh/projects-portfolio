@@ -41,22 +41,24 @@ export default function RainbowMarquee({ items = DEFAULT_PHRASES }) {
   }, [reduced])
 
   return (
-    <div ref={root} className="relative overflow-hidden border-y border-slate-200/90 bg-white py-4">
+    <div ref={root} className="relative isolate overflow-x-clip border-y border-slate-200/90 bg-white py-4">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
-      <div
-        ref={track}
-        className="animate-marquee flex w-max gap-12 whitespace-nowrap px-6 will-change-transform"
-      >
-        {doubled.map((label, i) => (
-          <span
-            key={`${label}-${i}`}
-            className="font-display text-[clamp(1.15rem,2.6vw,1.85rem)] font-extrabold tracking-tight text-gradient-rainbow"
-          >
-            {label}
-            <span className="mx-6 text-slate-300">·</span>
-          </span>
-        ))}
+      <div className="overflow-x-clip">
+        <div
+          ref={track}
+          className="animate-marquee flex w-max gap-12 whitespace-nowrap px-6 will-change-transform [contain:paint]"
+        >
+          {doubled.map((label, i) => (
+            <span
+              key={`${label}-${i}`}
+              className="font-display text-[clamp(1.15rem,2.6vw,1.85rem)] font-extrabold tracking-tight text-gradient-rainbow"
+            >
+              {label}
+              <span className="mx-6 text-slate-300">·</span>
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   )

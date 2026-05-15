@@ -81,7 +81,7 @@ export default function WorkParallaxShowcase({ projects: featured }) {
               Depth you can <span className="text-gradient-rainbow">feel</span> in the scroll
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-slate-600">
-              Placeholder case studies — swap in your launches, metrics, and URLs when ready.
+              Live platforms across the USA, India, and Germany — plus mobile products in beta.
             </p>
           </div>
           <ButtonLink to="/work" variant="soft" className="px-8">
@@ -111,14 +111,22 @@ export default function WorkParallaxShowcase({ projects: featured }) {
                 </div>
                 <h3 className="relative mt-6 font-display text-xl font-extrabold tracking-tight text-slate-950">{p.title}</h3>
                 <p className="relative mt-4 flex-1 text-sm leading-relaxed text-slate-600">{p.summary}</p>
-                <a
-                  data-cursor="hover"
-                  className="relative mt-8 inline-flex items-center gap-2 text-sm font-extrabold text-indigo-700 hover:text-indigo-900"
-                  href={p.href}
-                >
-                  Case study
-                  <span aria-hidden>→</span>
-                </a>
+                {p.href ? (
+                  <a
+                    data-cursor="hover"
+                    className="relative mt-8 inline-flex items-center gap-2 text-sm font-extrabold text-[color:var(--color-brand-blue)] hover:text-[color:var(--color-brand-navy)]"
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit live site
+                    <span aria-hidden>↗</span>
+                  </a>
+                ) : (
+                  <span className="relative mt-8 inline-flex rounded-full bg-amber-50 px-3 py-1.5 text-xs font-extrabold text-amber-900 ring-1 ring-amber-100">
+                    Beta · In development
+                  </span>
+                )}
                 </div>
               </article>
             </TiltCard>

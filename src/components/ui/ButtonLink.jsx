@@ -5,12 +5,12 @@ import { useReducedMotion } from '../../motion/useReducedMotion'
 
 const variants = {
   primary:
-    'bg-slate-950 text-white shadow-lg shadow-slate-900/15 ring-1 ring-slate-950/20 hover:bg-slate-900',
+    'bg-[color:var(--color-brand-navy)] text-white shadow-lg shadow-[color:color-mix(in_oklab,var(--color-brand-navy)_30%,transparent)] ring-1 ring-[color:color-mix(in_oklab,var(--color-brand-navy)_25%,transparent)] hover:brightness-110',
   rainbow:
-    'bg-rainbow-strip text-white shadow-lg shadow-slate-900/20 ring-1 ring-black/10 hover:brightness-105',
+    'bg-rainbow-strip text-white shadow-lg shadow-[color:color-mix(in_oklab,var(--color-brand-blue)_25%,transparent)] ring-1 ring-black/10 hover:brightness-105',
   ghost:
-    'border border-slate-200/90 bg-white/80 text-slate-900 shadow-sm backdrop-blur-sm hover:border-slate-300 hover:bg-white',
-  soft: 'bg-slate-950 text-white shadow-md hover:bg-slate-900',
+    'border border-brand bg-white/80 text-[color:var(--color-ink)] shadow-sm backdrop-blur-sm hover:border-[color:var(--color-brand-cyan)] hover:bg-surface-soft',
+  soft: 'bg-[color:var(--color-brand-navy)] text-white shadow-md hover:brightness-110',
 }
 
 export default function ButtonLink({ to, children, variant = 'primary', className = '', magnetic = true }) {
@@ -44,7 +44,7 @@ export default function ButtonLink({ to, children, variant = 'primary', classNam
   }, [magnetic, reduced])
 
   const base =
-    'group relative isolate inline-flex overflow-hidden rounded-full font-display text-sm font-extrabold tracking-tight transition-[box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2'
+    'group relative isolate inline-flex overflow-hidden rounded-full font-display text-sm font-extrabold tracking-tight transition-[box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-brand-blue)] focus-visible:ring-offset-2'
 
   return (
     <span ref={wrap} className={magnetic && !reduced ? 'inline-flex' : 'contents'}>

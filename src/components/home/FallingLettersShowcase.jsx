@@ -1,8 +1,7 @@
 import { useLayoutEffect, useMemo, useRef } from 'react'
+import { rainbow } from '../../config/brand'
 import { ensureGsapPlugins, gsap } from '../../motion/ensureGsap'
 import { useReducedMotion } from '../../motion/useReducedMotion'
-
-const RAINBOW = ['#ef4444', '#f97316', '#ca8a04', '#22c55e', '#3b82f6', '#6366f1', '#a855f7']
 
 export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' }) {
   const wrap = useRef(null)
@@ -53,7 +52,7 @@ export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' })
   if (reduced) {
     return (
       <section className="border-y border-slate-200 bg-white py-24">
-        <div className="mx-auto max-w-6xl px-4 text-center font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+        <div className="mx-auto max-w-[min(100%,90rem)] px-3 text-center font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:px-4 sm:text-5xl">
           {text}
         </div>
       </section>
@@ -62,12 +61,12 @@ export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' })
 
   return (
     <section ref={wrap} className="relative bg-white">
-      <div className="sticky top-0 flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-4">
+      <div className="sticky top-0 flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-3 sm:px-4">
         <p className="sr-only">{text}</p>
         <p className="mb-10 max-w-xl text-center text-sm font-semibold uppercase tracking-[0.35em] text-slate-500">
           Scroll — letters surrender one by one
         </p>
-        <div className="flex max-w-[min(96vw,1200px)] flex-wrap justify-center gap-y-3 text-center font-display text-[clamp(2.4rem,9.2vw,7rem)] font-extrabold leading-[0.92] tracking-tight">
+        <div className="flex max-w-[min(98vw,90rem)] flex-wrap justify-center gap-y-3 px-2 text-center font-display text-[clamp(2.4rem,9.2vw,7rem)] font-extrabold leading-[0.92] tracking-tight sm:px-0">
           {letters.map((ch, i) =>
             ch === ' ' ? (
               <span key={`sp-${i}`} className="inline-block w-[0.28em]" aria-hidden />
@@ -76,7 +75,7 @@ export default function FallingLettersShowcase({ text = 'GRAVITY IS OPTIONAL' })
                 key={`c-${i}`}
                 data-fall-char
                 className="inline-block will-change-transform drop-shadow-sm"
-                style={{ color: RAINBOW[i % RAINBOW.length] }}
+                style={{ color: rainbow[i % rainbow.length] }}
               >
                 {ch}
               </span>

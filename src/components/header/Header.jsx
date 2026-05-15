@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Container from '../ui/Container'
 import ButtonLink from '../ui/ButtonLink'
-import { company, nav } from '../../config/site'
+import GrahmindLogo from '../ui/GrahmindLogo'
+import { nav } from '../../config/site'
 
 function linkClass({ isActive }) {
   return [
     'rounded-full px-3 py-2 text-sm font-extrabold tracking-tight transition',
     isActive
-      ? 'bg-slate-950 text-white shadow-md shadow-slate-900/15'
-      : 'text-slate-700 hover:bg-slate-100/90',
+      ? 'bg-[color:var(--color-brand-navy)] text-white shadow-md shadow-[color:color-mix(in_oklab,var(--color-brand-navy)_35%,transparent)]'
+      : 'text-[color:var(--color-ink-muted)] hover:bg-surface-soft hover:text-[color:var(--color-ink)]',
   ].join(' ')
 }
 
@@ -17,21 +18,10 @@ export default function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-[60] border-b border-slate-200/70 bg-white/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-[60] border-b border-brand bg-white/75 backdrop-blur-xl">
       <div className="h-1 w-full bg-rainbow-strip" aria-hidden />
-      <Container className="flex items-center justify-between gap-4 py-4">
-        <NavLink
-          to="/"
-          data-cursor="hover"
-          className="group flex items-center gap-3"
-          onClick={() => setOpen(false)}
-        >
-          <img src="/grahmind-mark.svg" alt="" className="h-10 w-10 shrink-0" width={40} height={40} />
-          <div className="leading-tight">
-            <div className="font-display text-lg font-extrabold tracking-tight text-slate-950">{company.name}</div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500">Portfolio</div>
-          </div>
-        </NavLink>
+      <Container className="flex min-w-0 items-center justify-between gap-3 py-3.5 sm:gap-4 sm:py-4">
+        <GrahmindLogo to="/" size="header" className="min-w-0" onClick={() => setOpen(false)} />
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {nav.map((item) => (
@@ -50,7 +40,7 @@ export default function Header() {
         <button
           type="button"
           data-cursor="hover"
-          className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-2.5 text-slate-900 shadow-sm md:hidden"
+          className="inline-flex items-center justify-center rounded-2xl border border-brand bg-white p-2.5 text-[color:var(--color-ink)] shadow-sm md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -67,7 +57,7 @@ export default function Header() {
       </Container>
 
       {open ? (
-        <div id="mobile-nav" className="border-t border-slate-200 bg-white/95 backdrop-blur-lg md:hidden">
+        <div id="mobile-nav" className="border-t border-brand bg-white/95 backdrop-blur-lg md:hidden">
           <Container className="flex flex-col gap-2 py-4">
             {nav.map((item) => (
               <NavLink key={item.to} to={item.to} className={linkClass} onClick={() => setOpen(false)}>

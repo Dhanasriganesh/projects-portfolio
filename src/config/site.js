@@ -1,12 +1,13 @@
-/** Placeholder portfolio data — replace with real project links and copy later. */
+/** Grahmind portfolio — project catalog */
 export const company = {
   name: 'Grahmind',
+  legalName: 'Grahmind Innovations',
   tagline: 'Engineering clarity. Shipping momentum.',
   blurb:
     'We design and build premium digital products — platforms, web apps, and AI-enabled experiences — for teams who care about craft, performance, and measurable outcomes.',
   email: 'hello@grahmind.com',
   phone: '+1 (555) 010-2048',
-  location: 'Global delivery · HQ scheduling on request',
+  location: 'Global delivery · USA, India, Germany & beyond',
 }
 
 export const nav = [
@@ -49,101 +50,228 @@ export const services = [
 
 export const stats = [
   { label: 'Years shipping together', value: '10+' },
-  { label: 'Products launched', value: '48' },
+  { label: 'Products delivered', value: '20+' },
+  { label: 'Markets served', value: '3' },
   { label: 'Avg. client satisfaction', value: '4.9/5' },
-  { label: 'Time zones supported', value: '12' },
 ]
 
-export const projects = [
+const CARD_STYLES = [
+  { accent: 'border-l-red-500', pill: 'bg-red-50 text-red-700 ring-red-100' },
+  { accent: 'border-l-orange-500', pill: 'bg-orange-50 text-orange-800 ring-orange-100' },
+  { accent: 'border-l-amber-500', pill: 'bg-amber-50 text-amber-900 ring-amber-100' },
+  { accent: 'border-l-lime-500', pill: 'bg-lime-50 text-lime-900 ring-lime-100' },
+  { accent: 'border-l-emerald-500', pill: 'bg-emerald-50 text-emerald-800 ring-emerald-100' },
+  { accent: 'border-l-sky-500', pill: 'bg-sky-50 text-sky-800 ring-sky-100' },
+  { accent: 'border-l-blue-600', pill: 'bg-blue-50 text-blue-800 ring-blue-100' },
+  { accent: 'border-l-indigo-500', pill: 'bg-indigo-50 text-indigo-800 ring-indigo-100' },
+  { accent: 'border-l-violet-500', pill: 'bg-violet-50 text-violet-800 ring-violet-100' },
+]
+
+const RAW_PROJECTS = [
+  // USA — IT Consulting platforms
   {
-    slug: 'atlas-commerce',
-    title: 'Atlas Commerce Platform',
-    category: 'Platform · B2B',
-    summary:
-      'A modular commerce backbone with real-time inventory, role-based admin, and enterprise SSO — placeholder until your final link is ready.',
-    year: '2025',
-    href: '#',
-    accent: 'border-l-red-500',
-    pill: 'bg-red-50 text-red-700 ring-red-100',
+    slug: 'tetraxai',
+    title: 'Tetrax AI',
+    region: 'USA',
+    category: 'IT Consulting',
+    summary: 'AI-forward IT consulting platform positioning services, expertise, and client engagement for the US market.',
+    year: 'Live',
+    href: 'https://www.tetraxai.com/',
   },
   {
-    slug: 'lumen-analytics',
-    title: 'Lumen Analytics Suite',
-    category: 'SaaS · Data',
-    summary:
-      'Interactive dashboards, cohort exploration, and export pipelines designed for decision velocity — replace with your project narrative.',
-    year: '2025',
-    href: '#',
-    accent: 'border-l-orange-500',
-    pill: 'bg-orange-50 text-orange-800 ring-orange-100',
+    slug: 'nexusaisol',
+    title: 'Nexus AI Solutions',
+    region: 'USA',
+    category: 'IT Consulting',
+    summary: 'Corporate web presence for Nexus AI Solutions — strategy, delivery narrative, and lead capture for AI consulting.',
+    year: 'Live',
+    href: 'https://www.nexusaisol.com/',
   },
   {
-    slug: 'northstar-mobile',
-    title: 'Northstar Field Ops',
-    category: 'Mobile · Operations',
-    summary:
-      'Offline-first workflows, barcode capture, and supervisor approvals — crafted for teams on the move.',
-    year: '2024',
-    href: '#',
-    accent: 'border-l-amber-500',
-    pill: 'bg-amber-50 text-amber-900 ring-amber-100',
+    slug: 'absnit',
+    title: 'ABSN IT Solutions',
+    region: 'USA',
+    category: 'IT Consulting',
+    summary: 'Brand and platform experience for ABSN IT Solutions, showcasing technology services and consulting capabilities.',
+    year: 'Live',
+    href: 'https://www.absnit.com/',
   },
   {
-    slug: 'vertex-ai-console',
-    title: 'Vertex AI Console',
-    category: 'AI · Internal tools',
-    summary:
-      'A secure internal console for prompt templates, eval runs, and audit trails — built for governance at scale.',
-    year: '2024',
-    href: '#',
-    accent: 'border-l-lime-500',
-    pill: 'bg-lime-50 text-lime-900 ring-lime-100',
+    slug: 'nakitgroup',
+    title: 'Nak IT Group',
+    region: 'USA',
+    category: 'IT Consulting',
+    summary: 'Professional IT group website — service lines, credibility, and contact pathways for enterprise prospects.',
+    year: 'Live',
+    href: 'https://www.nakitgroup.com/',
   },
   {
-    slug: 'harbor-design-system',
-    title: 'Harbor Design System',
-    category: 'Design systems',
-    summary:
-      'Tokens, components, and documentation that align product squads — from Figma to production with parity checks.',
-    year: '2024',
-    href: '#',
-    accent: 'border-l-emerald-500',
-    pill: 'bg-emerald-50 text-emerald-800 ring-emerald-100',
+    slug: 'eliteaisol',
+    title: 'Elite AI Solutions',
+    region: 'USA',
+    category: 'IT Consulting',
+    summary: 'Premium AI solutions consultancy site — positioning, offerings, and conversion-focused structure.',
+    year: 'Live',
+    href: 'https://www.eliteaisol.com/',
+  },
+
+  // India
+  {
+    slug: 'powder-legacy',
+    title: 'The Powder Legacy',
+    region: 'India',
+    category: 'E-commerce',
+    summary: 'Handmade natural powders e-commerce — product storytelling, catalog, and checkout-ready shopping experience.',
+    year: 'Live',
+    href: 'https://www.thepowderlegacy.in/',
   },
   {
-    slug: 'pulse-marketing-hub',
-    title: 'Pulse Marketing Hub',
-    category: 'Web app · Growth',
-    summary:
-      'Campaign orchestration with experimentation hooks, approvals, and brand guardrails baked into the editor.',
-    year: '2023',
-    href: '#',
-    accent: 'border-l-sky-500',
-    pill: 'bg-sky-50 text-sky-800 ring-sky-100',
+    slug: 'vastora-designs',
+    title: 'Vastora Designs',
+    region: 'India',
+    category: 'Interior design',
+    summary: 'Architecture and interior design landing experience — portfolio-led layout built to convert high-intent enquiries.',
+    year: 'Live',
+    href: 'https://vastoradesigns.in/',
   },
   {
-    slug: 'citadel-security',
-    title: 'Citadel Security Portal',
-    category: 'Security · Enterprise',
-    summary:
-      'Policy management, evidence collection, and stakeholder reporting in one calm, high-trust interface.',
-    year: '2023',
-    href: '#',
-    accent: 'border-l-blue-600',
-    pill: 'bg-blue-50 text-blue-800 ring-blue-100',
+    slug: 'ssrchem',
+    title: 'SSRCHEM',
+    region: 'India',
+    category: 'Industrial platform',
+    summary: 'Digital platform for one of Telangana\'s largest chemical solvents businesses — catalog, trust, and B2B lead flows.',
+    year: 'Live',
+    href: 'https://www.ssrchem.com/',
   },
   {
-    slug: 'prism-docs',
-    title: 'Prism Documentation',
-    category: 'Developer experience',
-    summary:
-      'Search-first docs with versioning, SDK snippets, and analytics on what developers actually read.',
-    year: '2023',
-    href: '#',
-    accent: 'border-l-indigo-500',
-    pill: 'bg-indigo-50 text-indigo-800 ring-indigo-100',
+    slug: 'spectrum-electricals',
+    title: 'Spectrum Electricals',
+    region: 'India',
+    category: 'Services portfolio',
+    summary: 'Electrical services portfolio for houses, villas, and buildings — services, coverage, and quote-ready contact.',
+    year: 'Live',
+    href: 'https://spectrum-electricals.in/',
+  },
+  {
+    slug: 'shreebhima-caterers',
+    title: 'Shree Bhima Caterers',
+    region: 'India',
+    category: 'Hospitality',
+    summary: 'Premium catering website for weddings, parties, and functions — menus, galleries, and booking-oriented UX.',
+    year: 'Live',
+    href: 'https://www.shreebhimacaterers.com/',
+  },
+  {
+    slug: 'smdb-gold',
+    title: 'SMDB Gold',
+    region: 'India',
+    category: 'Multi-branch software',
+    summary: 'Complete software setup for gold retail — multi-branch operations, inventory, and day-to-day shop management.',
+    year: 'Live',
+    href: 'https://smdb-gold.vercel.app/',
+  },
+  {
+    slug: 'khaata-shares',
+    title: 'Khaata (Shares)',
+    region: 'India',
+    category: 'Fintech platform',
+    summary: 'End-to-end platform for managing and running a private share market business — ledgers, workflows, and controls.',
+    year: 'Live',
+    href: 'https://shares-market.vercel.app/',
+  },
+  {
+    slug: 'fruit-delight',
+    title: 'Fruit Delight',
+    region: 'India',
+    category: 'Delivery platform',
+    summary: 'Fresh cut fruit bowl supply platform for Hyderabad — ordering, delivery positioning, and mobile-first UX.',
+    year: 'Live',
+    href: 'https://fruitdelight.in/',
+  },
+
+  // Germany
+  {
+    slug: 'thinkpoc',
+    title: 'ThinkPOC',
+    region: 'Germany',
+    category: 'B2B mediator',
+    summary: 'Mediator application connecting two business companies — structured negotiations, workflows, and secure collaboration.',
+    year: 'Live',
+    href: 'https://thinkpoc.com/',
+  },
+
+  // Mobile — Beta
+  {
+    slug: 'criczo',
+    title: 'Criczo',
+    region: 'Mobile',
+    category: 'Sports management',
+    summary: 'Domestic cricket match management with player lifelong statistics — scheduling, squads, and performance history.',
+    year: 'Beta',
+    href: null,
+  },
+  {
+    slug: 'khaata-mobile',
+    title: 'Khaata (Mobile)',
+    region: 'Mobile',
+    category: 'Personal finance',
+    summary: 'Track and reconcile personal money exchanges — who owes whom, reminders, and clean settlement flows.',
+    year: 'Beta',
+    href: null,
+  },
+  {
+    slug: 'musicz',
+    title: 'Musicz',
+    region: 'Mobile',
+    category: 'Streaming',
+    summary: 'Spotify-class listening experience — library, playback, and discovery patterns in a native mobile shell.',
+    year: 'Beta',
+    href: null,
   },
 ]
+
+export const projects = RAW_PROJECTS.map((p, i) => ({
+  ...p,
+  ...CARD_STYLES[i % CARD_STYLES.length],
+}))
+
+export const projectRegions = [
+  {
+    id: 'USA',
+    label: 'USA',
+    headline: 'IT Consulting platforms',
+    description: 'AI and IT consulting brands built for the US market — positioning, credibility, and lead-ready web platforms.',
+  },
+  {
+    id: 'India',
+    label: 'India',
+    headline: 'Products & industry platforms',
+    description: 'E-commerce, industrial, hospitality, fintech, and vertical software — from landing pages to full operational systems.',
+  },
+  {
+    id: 'Germany',
+    label: 'Germany',
+    headline: 'B2B collaboration',
+    description: 'Enterprise-grade tools for cross-company workflows and mediation.',
+  },
+  {
+    id: 'Mobile',
+    label: 'Mobile',
+    headline: 'Applications (beta)',
+    description: 'Native experiences in active development — sports, finance, and media.',
+  },
+]
+
+/** Home page highlights */
+export const featuredProjectSlugs = ['fruit-delight', 'thinkpoc', 'ssrchem']
+
+export function getFeaturedProjects() {
+  return featuredProjectSlugs
+    .map((slug) => projects.find((p) => p.slug === slug))
+    .filter(Boolean)
+}
+
+export const workFilters = ['All', 'USA', 'India', 'Germany', 'Mobile']
 
 export const values = [
   {

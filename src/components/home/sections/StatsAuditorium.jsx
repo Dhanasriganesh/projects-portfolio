@@ -114,7 +114,7 @@ export default function StatsAuditorium() {
               <div
                 className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-25 blur-2xl transition duration-500 group-hover:opacity-45"
                 style={{
-                  background: `conic-gradient(from ${i * 45}deg, #ef4444, #f97316, #22c55e, #3b82f6, #a855f7, #ef4444)`,
+                  background: `conic-gradient(from ${i * 45}deg, var(--color-brand-red), var(--color-brand-orange), var(--color-brand-green), var(--color-brand-blue), var(--color-brand-purple), var(--color-brand-red))`,
                 }}
                 aria-hidden
               />

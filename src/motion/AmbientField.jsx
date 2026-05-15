@@ -18,8 +18,8 @@ export default function AmbientField({ reduced }) {
     const ctx = gsap.context(() => {
       blobs.forEach((blob, i) => {
         gsap.to(blob, {
-          xPercent: gsap.utils.random(-8, 8),
-          yPercent: gsap.utils.random(-6, 6),
+          xPercent: gsap.utils.random(-4, 4),
+          yPercent: gsap.utils.random(-3, 3),
           scale: gsap.utils.random(0.95, 1.08),
           duration: gsap.utils.random(10, 16),
           ease: 'sine.inOut',
@@ -35,7 +35,7 @@ export default function AmbientField({ reduced }) {
   return (
     <div
       ref={root}
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-white"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-white [contain:strict]"
       aria-hidden
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(15,23,42,0.04),_transparent_55%)]" />

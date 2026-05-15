@@ -8,10 +8,10 @@ import WorkParallaxShowcase from '../home/sections/WorkParallaxShowcase'
 import ProcessLineReveal from '../home/sections/ProcessLineReveal'
 import TestimonialWordHaze from '../home/sections/TestimonialWordHaze'
 import CTAFieldPulse from '../home/sections/CTAFieldPulse'
-import { projects } from '../../config/site'
+import { getFeaturedProjects } from '../../config/site'
 
 export default function Home() {
-  const featured = useMemo(() => projects.slice(0, 3), [])
+  const featured = useMemo(() => getFeaturedProjects(), [])
 
   return (
     <div>

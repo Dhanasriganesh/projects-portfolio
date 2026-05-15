@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 import { ensureGsapPlugins, gsap, ScrollTrigger } from './ensureGsap'
+import { setLenisInstance } from './scrollToTop'
 
 /**
  * Smooth scroll + ScrollTrigger sync. Disabled when reduced motion is preferred.
@@ -18,6 +19,7 @@ export function useLenisScroll(enabled) {
     })
 
     lenis.on('scroll', ScrollTrigger.update)
+    setLenisInstance(lenis)
 
     const tickerCb = (time) => {
       lenis.raf(time * 1000)
@@ -33,6 +35,7 @@ export function useLenisScroll(enabled) {
     return () => {
       window.removeEventListener('resize', onResize)
       gsap.ticker.remove(tickerCb)
+      setLenisInstance(null)
       lenis.destroy()
       ScrollTrigger.refresh()
     }

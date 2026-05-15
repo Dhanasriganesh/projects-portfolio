@@ -5,18 +5,30 @@
   --font-display: "Funnel Display", ui-sans-serif, system-ui, sans-serif;
 
   --color-surface: #ffffff;
-  --color-ink: #0f172a;
-  --color-ink-muted: #475569;
-  --color-border: #e2e8f0;
-  --color-soft: #f8fafc;
+  --color-surface-soft: #f4f7fa;
+  --color-ink: #1d3557;
+  --color-ink-muted: #4a6274;
+  --color-border: #d8e2ec;
+  --color-soft: #f4f7fa;
 
-  --color-r-500: #ef4444;
-  --color-o-500: #f97316;
-  --color-y-500: #ca8a04;
-  --color-g-500: #22c55e;
-  --color-b-500: #3b82f6;
-  --color-i-500: #6366f1;
-  --color-v-500: #a855f7;
+  /* Logo crown spectrum */
+  --color-brand-red: #e63946;
+  --color-brand-orange: #f4a261;
+  --color-brand-yellow: #e9c46a;
+  --color-brand-green: #2a9d8f;
+  --color-brand-cyan: #00b4d8;
+  --color-brand-blue: #0077b6;
+  --color-brand-purple: #7209b7;
+  --color-brand-navy: #1d3557;
+
+  /* Legacy aliases used by utilities */
+  --color-r-500: var(--color-brand-red);
+  --color-o-500: var(--color-brand-orange);
+  --color-y-500: var(--color-brand-yellow);
+  --color-g-500: var(--color-brand-green);
+  --color-b-500: var(--color-brand-blue);
+  --color-i-500: var(--color-brand-cyan);
+  --color-v-500: var(--color-brand-purple);
 }
 
 @layer base {
@@ -25,10 +37,19 @@
     font-family: var(--font-sans);
     color: var(--color-ink);
     background-color: var(--color-surface);
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   body {
-    @apply m-0 min-h-dvh bg-white text-slate-900;
+    @apply m-0 min-h-dvh bg-white text-[color:var(--color-ink)];
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  #root {
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   html.gm-cursor-none body {
@@ -42,12 +63,13 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--color-b-500) 28%, white);
+    background: color-mix(in oklab, var(--color-brand-cyan) 32%, white);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-indigo-500;
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: 2px;
   }
 }
 
@@ -65,6 +87,22 @@
     font-family: var(--font-display);
   }
 
+  .text-ink {
+    color: var(--color-ink);
+  }
+
+  .text-ink-muted {
+    color: var(--color-ink-muted);
+  }
+
+  .bg-surface-soft {
+    background-color: var(--color-surface-soft);
+  }
+
+  .border-brand {
+    border-color: var(--color-border);
+  }
+
   .animate-marquee {
     animation: marquee 38s linear infinite;
   }
@@ -72,13 +110,13 @@
   .text-gradient-rainbow {
     background-image: linear-gradient(
       90deg,
-      var(--color-r-500),
-      var(--color-o-500),
-      var(--color-y-500),
-      var(--color-g-500),
-      var(--color-b-500),
-      var(--color-i-500),
-      var(--color-v-500)
+      var(--color-brand-red),
+      var(--color-brand-orange),
+      var(--color-brand-yellow),
+      var(--color-brand-green),
+      var(--color-brand-cyan),
+      var(--color-brand-blue),
+      var(--color-brand-purple)
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -88,13 +126,13 @@
   .border-gradient-rainbow {
     border-image: linear-gradient(
       90deg,
-      var(--color-r-500),
-      var(--color-o-500),
-      var(--color-y-500),
-      var(--color-g-500),
-      var(--color-b-500),
-      var(--color-i-500),
-      var(--color-v-500)
+      var(--color-brand-red),
+      var(--color-brand-orange),
+      var(--color-brand-yellow),
+      var(--color-brand-green),
+      var(--color-brand-cyan),
+      var(--color-brand-blue),
+      var(--color-brand-purple)
     )
       1;
   }
@@ -102,22 +140,22 @@
   .bg-rainbow-strip {
     background: linear-gradient(
       90deg,
-      var(--color-r-500),
-      var(--color-o-500),
-      var(--color-y-500),
-      var(--color-g-500),
-      var(--color-b-500),
-      var(--color-i-500),
-      var(--color-v-500)
+      var(--color-brand-red),
+      var(--color-brand-orange),
+      var(--color-brand-yellow),
+      var(--color-brand-green),
+      var(--color-brand-cyan),
+      var(--color-brand-blue),
+      var(--color-brand-purple)
     );
   }
 
   .mesh-rainbow {
     background:
-      radial-gradient(900px 420px at 12% 8%, color-mix(in oklab, var(--color-r-500) 18%, white), transparent 60%),
-      radial-gradient(760px 380px at 88% 12%, color-mix(in oklab, var(--color-v-500) 16%, white), transparent 58%),
-      radial-gradient(700px 360px at 70% 92%, color-mix(in oklab, var(--color-b-500) 16%, white), transparent 55%),
-      radial-gradient(640px 320px at 18% 88%, color-mix(in oklab, var(--color-g-500) 14%, white), transparent 55%),
+      radial-gradient(900px 420px at 12% 8%, color-mix(in oklab, var(--color-brand-red) 14%, white), transparent 60%),
+      radial-gradient(760px 380px at 88% 12%, color-mix(in oklab, var(--color-brand-purple) 12%, white), transparent 58%),
+      radial-gradient(700px 360px at 70% 92%, color-mix(in oklab, var(--color-brand-blue) 14%, white), transparent 55%),
+      radial-gradient(640px 320px at 18% 88%, color-mix(in oklab, var(--color-brand-green) 12%, white), transparent 55%),
       linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
   }
 }

@@ -103,7 +103,7 @@ export default function HeroPortal() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-rainbow-strip" />
           </span>
-          Grahmind · flagship delivery
+          Grahmind Innovations · flagship delivery
         </div>
 
         <h1 className="mt-10 max-w-[18ch] font-display text-[clamp(2.75rem,7.4vw,5.75rem)] font-extrabold leading-[0.95] tracking-tight text-slate-950">

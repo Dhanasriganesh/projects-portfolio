@@ -8,6 +8,7 @@ import CustomCursor from '../../motion/CustomCursor'
 import { ensureGsapPlugins } from '../../motion/ensureGsap'
 import { useLenisScroll } from '../../motion/useLenisScroll'
 import { useReducedMotion } from '../../motion/useReducedMotion'
+import { scrollToTop } from '../../motion/scrollToTop'
 
 export default function Layout() {
   const reduced = useReducedMotion()
@@ -34,16 +35,17 @@ export default function Layout() {
   }, [wideFinePointer, reduced])
 
   useLayoutEffect(() => {
+    scrollToTop()
     ensureGsapPlugins()
     requestAnimationFrame(() => ScrollTrigger.refresh())
   }, [location.pathname])
 
   return (
-    <div className="relative min-h-dvh bg-white">
+    <div className="relative min-h-dvh overflow-x-clip bg-white">
       <AmbientField reduced={reduced} />
       <CustomCursor active={wideFinePointer && !reduced} />
       <Header />
-      <main className="relative z-10">
+      <main className="relative z-10 overflow-x-clip">
         <Outlet />
       </main>
       <Footer />
