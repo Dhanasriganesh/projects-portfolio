@@ -191,11 +191,18 @@ export function NavbarButton({
       'bg-gradient-to-b from-indigo-600 to-indigo-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.25)_inset] hover:from-indigo-500 hover:to-indigo-600',
   }
 
-  const isRouter = Tag === Link
-  const routeProps = isRouter ? { to: to || href } : { href: href || to }
+  const dest = href || to
+  const isExternal = typeof dest === 'string' && /^https?:\/\//i.test(dest)
+  const isRouter = Tag === Link && !isExternal
+  const routeProps = isRouter ? { to: dest } : { href: dest }
 
   return (
-    <Tag className={cn(base, variants[variant] ?? variants.primary, className)} {...routeProps} {...props}>
+    <Tag
+      className={cn(base, variants[variant] ?? variants.primary, className)}
+      {...routeProps}
+      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      {...props}
+    >
       {children}
     </Tag>
   )

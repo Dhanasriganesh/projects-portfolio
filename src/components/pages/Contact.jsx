@@ -4,7 +4,7 @@ import Section from '../ui/Section'
 import PageHero from '../ui/PageHero'
 import ButtonLink from '../ui/ButtonLink'
 import RevealOnScroll from '../home/RevealOnScroll'
-import { company } from '../../config/site'
+import { company, contact } from '../../config/site'
 
 export default function Contact() {
   const [status, setStatus] = useState('idle')
@@ -25,7 +25,7 @@ export default function Contact() {
             Have questions? <span className="text-accent">We&apos;re here to help.</span>
           </>
         }
-        lead="Call us for instant support, demo scheduling, or a quick consultation — or send a project brief and we will follow up with next steps."
+        lead={contact.pageLead}
       />
 
       <Section spacing="md">

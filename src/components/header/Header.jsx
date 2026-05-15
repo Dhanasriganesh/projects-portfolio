@@ -11,7 +11,7 @@ import {
   NavbarButton,
   NavItems,
 } from '../ui/ResizableNavbar'
-import { nav } from '../../config/site'
+import { company, nav } from '../../config/site'
 import { cn } from '../../lib/cn'
 
 const navItems = nav.map((item) => ({ name: item.label, link: item.to }))
@@ -52,6 +52,9 @@ export default function Header() {
         <NavItems items={navItems} />
 
         <div className="relative z-20 flex shrink-0 items-center gap-2">
+          <NavbarButton href={company.website} variant="secondary" className="hidden sm:inline-flex">
+            Main site ↗
+          </NavbarButton>
           <NavbarButton as={Link} to="/contact" variant="gradient">
             Book intro
           </NavbarButton>
@@ -70,6 +73,9 @@ export default function Header() {
               {item.name}
             </NavLink>
           ))}
+          <NavbarButton href={company.website} variant="secondary" className="mt-2 w-full" onClick={close}>
+            Main site ↗
+          </NavbarButton>
           <NavbarButton as={Link} to="/contact" variant="gradient" className="mt-2 w-full" onClick={close}>
             Book intro
           </NavbarButton>

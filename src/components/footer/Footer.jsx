@@ -48,6 +48,16 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <a
+                    className="text-sm font-semibold text-accent hover:text-[color:var(--color-accent-hover)]"
+                    href={company.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Main site ↗
+                  </a>
+                </li>
               </ul>
             </div>
 
